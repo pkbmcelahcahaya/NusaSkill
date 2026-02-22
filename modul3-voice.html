@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 3: Voice Over & Musik AI</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; margin: 0; padding: 0; color: #333; }
+.navbar { background: #1a1a1a; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+.navbar .logo { font-size: 24px; font-weight: bold; color: #00d2ff; }
+.btn-back { background: #333; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; transition: background 0.3s; }
+.btn-back:hover { background: #555; }
+.container { max-width: 1000px; margin: 30px auto; background: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; }
+.module-header { background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%); color: white; padding: 40px; text-align: center; }
+.module-header h1 { margin: 0 0 10px 0; font-size: 2.2em; }
+.module-content { padding: 40px; }
+.week-section { margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+.week-section h2 { color: #3a7bd5; margin-bottom: 15px; }
+.img-fluid { width: 100%; height: 400px; object-fit: cover; border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.step-box { background: #f8f9fa; border-left: 4px solid #3a7bd5; padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+.step-box h4 { margin-top: 0; color: #333; }
+.task-list { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+.task-list h4 { margin-top: 0; color: #856404; }
+.eval-box { background: #e9ecef; border: 1px solid #ced4da; padding: 25px; border-radius: 8px; margin-top: 30px; }
+.eval-box h3 { margin-top: 0; color: #495057; }
+.eval-question { font-weight: bold; margin: 15px 0 10px 0; }
+.eval-options { list-style: none; padding: 0; }
+.eval-options li { margin-bottom: 8px; }
+.submission-form { background: #fdfdfe; border: 1px solid #e1e5eb; padding: 25px; border-radius: 8px; margin-top: 40px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+.form-control { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+.btn-submit { background: #28a745; color: white; padding: 12px 25px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold; }
+.btn-submit:hover { background: #218838; }
+</style>
+</head>
+<body>
+<div class="navbar">
+<div class="logo">NusaSkill</div>
+<a href="dashboard.html" class="btn-back">Kembali ke Dashboard</a>
+</div>
+<div class="container">
+<div class="module-header">
+<h1>Modul 3: Voice Over & Musik AI</h1>
+<p>Level: Menengah | Menghidupkan visual melalui manipulasi audio tingkat lanjut menggunakan kecerdasan buatan.</p>
+</div>
+<div class="module-content">
+<div class="week-section">
+<h2>📅 Minggu 1: Teknik Voice Over Realistis</h2>
+<p>Suara robotik sudah ditinggalkan. Kini AI seperti ElevenLabs memungkinkan kita menghasilkan suara hiper-realistis dengan emosi, jeda napas, dan penekanan intonasi. Minggu ini kita mempelajari teknik penulisan teks khusus agar AI membacanya dengan intonasi natural.</p>
+<img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1000&auto=format&fit=crop" class="img-fluid" alt="Audio Production">
+<div class="step-box">
+<h4>💡 Tutorial: Modifikasi Teks untuk TTS (Text-to-Speech)</h4>
+<ol>
+<li>Gunakan tanda hubung (-) untuk memperpanjang jeda kata.</li>
+<li>Gunakan huruf kapital untuk memberi penekanan emosi (stress) pada kata tertentu.</li>
+<li>Gunakan tanda kutip ("") untuk intonasi berbisik atau mengutip.</li>
+</ol>
+</div>
+<div class="task-list">
+<h4>📋 Tugas Praktik</h4>
+<p>Hasilkan 3 file audio pendek dari 1 kalimat yang sama namun dengan penekanan emosi yang berbeda (Marah, Sedih, Antusias) menggunakan platform TTS AI.</p>
+</div>
+</div>
+
+<div class="week-section">
+<h2>📅 Minggu 2: AI Voice Cloning & Lipsync Preparation</h2>
+<p>Membuat kloning suara digital (Voice Cloning) untuk konsistensi brand. Teknik ini sangat berguna jika Anda ingin membuat channel faceless yang di-host oleh karakter konsisten. Kita juga akan membahas cara membersihkan noise audio.</p>
+<div class="step-box">
+<h4>💡 Tutorial: Etika & Setup Voice Cloning</h4>
+<ol>
+<li>Rekam suara asli Anda membaca naskah artikulasi jelas selama 2 menit (bebas noise).</li>
+<li>Upload ke platform Voice Cloning.</li>
+<li>Generate naskah baru menggunakan model suara digital Anda.</li>
+</ol>
+</div>
+<div class="task-list">
+<h4>📋 Tugas Praktik</h4>
+<p>Buat Voice Clone menggunakan suara Anda sendiri atau suara public domain (no copyright). Rekam hasil generasi teks 30 detik menggunakan suara clone tersebut.</p>
+</div>
+</div>
+
+<div class="week-section">
+<h2>📅 Minggu 3: Sound Design Dasar</h2>
+<p>Video tanpa Sound Effect (SFX) akan terasa kosong. Mempelajari layering audio: Dialog (VO), SFX, dan Background Music (BGM). Kita akan mencari SFX menggunakan AI generator (misal: AudioCraft) atau library gratis.</p>
+<div class="step-box">
+<h4>💡 Tutorial: Audio Layering</h4>
+<ol>
+<li>Siapkan track VO.</li>
+<li>Tambahkan efek transisi suara (whoosh, riser) di antara perpindahan scene.</li>
+<li>Atur volume BGM di bawah -20db agar tidak menutupi suara utama (ducking).</li>
+</ol>
+</div>
+<div class="task-list">
+<h4>📋 Tugas Praktik</h4>
+<p>Lakukan mixing audio sederhana untuk video 30 detik. Kumpulkan file .mp3 atau .wav hasil mix yang berisi gabungan VO, Minimal 3 SFX, dan BGM.</p>
+</div>
+</div>
+
+<div class="week-section">
+<h2>📅 Minggu 4: Generasi Musik AI & Copyright</h2>
+<p>Platform seperti Suno atau Udio merevolusi penciptaan musik. Anda bisa membuat lagu lengkap dengan vokal dan instrumen hanya dari prompt. Minggu ini berfokus pada struktur prompt musik (Genre, BPM, Mood, Instrumen) dan memastikan hak penggunaannya komersial.</p>
+<img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1000&auto=format&fit=crop" class="img-fluid" alt="Music AI">
+<div class="step-box">
+<h4>💡 Tutorial: Prompt Musik AI</h4>
+<ol>
+<li>Buka AI Music Generator.</li>
+<li>Gunakan prompt: "Cinematic epic trailer music, slow buildup, intense drums at the end, 120 BPM, minor scale."</li>
+<li>Download hasil generasi dan gunakan sebagai BGM video project Anda.</li>
+</ol>
+</div>
+<div class="task-list">
+<h4>📋 Tugas Praktik</h4>
+<p>Hasilkan 2 track musik instrumental berdurasi masing-masing minimal 1 menit dengan mood yang berbeda (Satu ceria/lo-fi, satu dramatis/cinematic).</p>
+</div>
+</div>
+
+<div class="eval-box">
+<h3>📝 Evaluasi Akhir Modul 3</h3>
+<div class="eval-question">1. Cara terbaik mengakali Text-to-Speech (TTS) agar mengambil nafas lebih panjang adalah...</div>
+<ul class="eval-options">
+<li><input type="radio" name="q1" value="A"> A. Mengubah pengaturan pitch menjadi rendah</li>
+<li><input type="radio" name="q1" value="B"> B. Menggunakan tanda baca seperti koma, titik, atau tanda hubung berulang (--)</li>
+<li><input type="radio" name="q1" value="C"> C. Mengganti model bahasa menjadi bahasa Inggris</li>
+<li><input type="radio" name="q1" value="D"> D. Mengetik dengan huruf kapital semua</li>
+</ul>
+
+<div class="eval-question">2. Apa itu 'Audio Ducking' dalam post-production?</div>
+<ul class="eval-options">
+<li><input type="radio" name="q2" value="A"> A. Menambahkan suara bebek ke dalam video</li>
+<li><input type="radio" name="q2" value="B"> B. Menurunkan volume background music secara otomatis saat ada suara dialog (VO)</li>
+<li><input type="radio" name="q2" value="C"> C. Mengubah suara pria menjadi suara wanita</li>
+<li><input type="radio" name="q2" value="D"> D. Menghapus noise dari audio secara permanen</li>
+</ul>
+
+<div class="eval-question">3. Mengapa kita perlu berhati-hati saat melakukan Voice Cloning?</div>
+<ul class="eval-options">
+<li><input type="radio" name="q3" value="A"> A. Karena menghabiskan banyak kuota internet</li>
+<li><input type="radio" name="q3" value="B"> B. Karena ada isu etika dan privasi jika meniru suara orang lain tanpa izin</li>
+<li><input type="radio" name="q3" value="C"> C. Karena kualitasnya selalu jelek</li>
+<li><input type="radio" name="q3" value="D"> D. Algoritma YouTube akan langsung menghapus channel</li>
+</ul>
+
+<div class="eval-question">4. BPM dalam konteks prompt musik AI singkatan dari?</div>
+<ul class="eval-options">
+<li><input type="radio" name="q4" value="A"> A. Beats Per Minute</li>
+<li><input type="radio" name="q4" value="B"> B. Background Pitch Music</li>
+<li><input type="radio" name="q4" value="C"> C. Base Parameter Model</li>
+<li><input type="radio" name="q4" value="D"> D. Bass Punch Matrix</li>
+</ul>
+
+<div class="eval-question">5. Soal Essay:</div>
+<p>Jelaskan langkah-langkah yang akan Anda lakukan untuk mendesain audio (VO, SFX, BGM) pada sebuah adegan video di mana karakter sedang berjalan di hutan yang gelap lalu tiba-tiba terkejut!</p>
+<textarea class="form-control" rows="4" placeholder="Ketik jawaban essay Anda di sini..."></textarea>
+</div>
+
+<div class="submission-form">
+<h3>📥 Kumpulkan Tugas & Evaluasi</h3>
+<div class="form-group">
+<label>Pilih Tugas</label>
+<select class="form-control">
+<option value="minggu1">Tugas Minggu 1: Variasi Emosi VO</option>
+<option value="minggu2">Tugas Minggu 2: Voice Cloning</option>
+<option value="minggu3">Tugas Minggu 3: Audio Mixing (VO+SFX+BGM)</option>
+<option value="minggu4">Tugas Minggu 4: Generasi Track Musik</option>
+<option value="evaluasi">Evaluasi Akhir Modul 3</option>
+</select>
+</div>
+<div class="form-group">
+<label>URL Google Drive Tugas</label>
+<input type="url" class="form-control" placeholder="https://drive.google.com/drive/folders/...">
+</div>
+<button class="btn-submit" onclick="document.getElementById('success-msg-3').style.display='block'">Submit Tugas</button>
+<div id="success-msg-3" style="display:none; color:#155724; background-color:#d4edda; padding:10px; border-radius:4px; margin-top:15px; border:1px solid #c3e6cb;">Berhasil! Tugas Anda telah tersimpan ke dalam sistem.</div>
+</div>
+
+</div>
+</div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
