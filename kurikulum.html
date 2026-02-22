@@ -4,31 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kurikulum - NusaSkill</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background-color: #f4f7f6; color: #333; }
-        
-        /* CSS Navbar & Logo */
-        .navbar { background-color: #2c3e50; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; }
-        .brand-container { display: flex; align-items: center; }
-        .logo { height: 40px; margin-right: 15px; }
-        .navbar h2 { margin: 0; color: #3498db; }
-        .navbar a { color: white; text-decoration: none; margin-left: 20px; font-weight: bold; }
-        
-        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
-        
-        /* CSS Card & Thumbnail */
-        .level-card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-left: 5px solid #3498db; }
-        .card-img { width: 100%; max-height: 250px; object-fit: cover; border-radius: 5px; margin-bottom: 15px; }
-        
-        .basic { border-color: #2ecc71; }
-        .inter { border-color: #f1c40f; }
-        .advance { border-color: #e74c3c; }
-        
-        h3 { margin-top: 0; color: #2c3e50; }
-        .price { font-size: 20px; font-weight: bold; color: #2c3e50; margin: 10px 0; }
-        .btn-daftar { background-color: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 10px; font-weight: bold; }
-        .btn-daftar:hover { background-color: #2980b9; }
-    </style>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -53,7 +30,7 @@
         <p><strong>Durasi:</strong> 3 Bulan (12 Pertemuan)</p>
         <p><strong>Materi:</strong> Windows, Internet, MS Word, MS Excel Dasar, PowerPoint.</p>
         <div class="price">Rp 450.000</div>
-        <a href="pendaftaran.html" class="btn-daftar">Pilih Basic</a>
+        <a href="pendaftaran.html" class="btn-action" style="background-color: #3498db;">Pilih Basic</a>
     </div>
 
     <div class="level-card inter">
@@ -62,7 +39,7 @@
         <p><strong>Durasi:</strong> 3 Bulan (12 Pertemuan)</p>
         <p><strong>Materi:</strong> Excel Lanjutan (VLOOKUP, Pivot), Dasar Desain Grafis, Dasar HTML.</p>
         <div class="price">Rp 650.000</div>
-        <a href="pendaftaran.html" class="btn-daftar">Pilih Intermediate</a>
+        <a href="pendaftaran.html" class="btn-action" style="background-color: #3498db;">Pilih Intermediate</a>
     </div>
 
     <div class="level-card advance">
@@ -71,9 +48,11 @@
         <p><strong>Durasi:</strong> 6 Bulan (24 Pertemuan)</p>
         <p><strong>Spesialisasi:</strong> Web Developer / Desain Grafis / Digital Marketing.</p>
         <div class="price">Rp 1.200.000</div>
-        <a href="pendaftaran.html" class="btn-daftar">Pilih Advance</a>
+        <a href="pendaftaran.html" class="btn-action" style="background-color: #3498db;">Pilih Advance</a>
     </div>
 </div>
+
+<script src="app.js"></script>
 
 </body>
 </html>
