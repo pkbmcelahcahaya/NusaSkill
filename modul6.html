@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 6: JavaScript Dasar - NusaSkill</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .module-header { text-align: center; margin-bottom: 40px; padding: 30px; background: linear-gradient(135deg, #f39c12, #d35400); color: white; border-radius: 10px; }
+        .module-header h1 { margin: 0 0 10px 0; font-size: 28px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }
+        .module-content { background: #ffffff; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 40px; line-height: 1.8; color: #333; }
+        .week-section { margin-top: 40px; padding-top: 20px; border-top: 2px dashed #ecf0f1; }
+        .week-section h2 { color: #d35400; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .week-section h3 { color: #e67e22; margin-top: 25px; }
+        .img-fluid { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .code-box { background: #1e1e1e; color: #d4d4d4; padding: 15px 20px; margin: 15px 0; border-radius: 5px; font-family: 'Courier New', Courier, monospace; overflow-x: auto; border-left: 4px solid #f1c40f; }
+        .code-kw { color: #569cd6; } /* Keyword biru */
+        .code-str { color: #ce9178; } /* String orange */
+        .code-num { color: #b5cea8; } /* Number hijau */
+        .task-list { background: #fef9e7; padding: 20px; border-radius: 8px; border: 1px solid #fcf3cf; margin-top: 30px; }
+        .task-list h4 { color: #b9770e; margin-top: 0; font-size: 18px; }
+        .task-list ul { padding-left: 20px; margin-bottom: 0; color: #b9770e; }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="brand-container">
+        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/NusaSkill.png" alt="Logo NusaSkill" class="logo">
+        <h2>NusaSkill LMS</h2>
+    </div>
+    <a href="dashboard.html" style="background: #e67e22; padding: 8px 15px; border-radius: 5px; color: white; text-decoration: none;">Kembali ke Dashboard</a>
+</div>
+
+<div class="container">
+    <div class="module-header">
+        <h1>Modul 6: JavaScript & Logika Pemrograman</h1>
+        <p>Tahap Ahli (Advance) | Fokus: Membuat Website Menjadi Hidup (Interaktif)</p>
+        <p style="font-size: 14px; opacity: 0.8;">Instruktur: Admin Budi</p>
+    </div>
+
+    <div class="module-content">
+        <p style="font-size: 18px; text-align: center; margin-bottom: 40px;">Jika HTML adalah tulang, dan CSS adalah kulit, maka <strong>JavaScript</strong> adalah otot dan otaknya. JS membuat tombol bisa berfungsi, kalkulator bisa berhitung, dan web bisa merespon pengguna.</p>
+
+        <div class="week-section">
+            <h2>📅 Minggu 1: Variabel & Tipe Data</h2>
+            <p>Variabel ibarat "kotak penyimpanan" untuk menyimpan informasi seperti nama, angka, atau status.</p>
+            
+            <h3>Mendeklarasikan Variabel (let & const)</h3>
+            <div class="code-box">
+<span class="code-kw">let</span> nama = <span class="code-str">"Budi"</span>; <span style="color:#6a9955;">// Teks (String)</span><br>
+<span class="code-kw">let</span> umur = <span class="code-num">25</span>; <span style="color:#6a9955;">// Angka (Number)</span><br>
+<span class="code-kw">const</span> phi = <span class="code-num">3.14</span>; <span style="color:#6a9955;">// Nilai tetap yang tidak bisa diubah</span><br>
+<br>
+<span class="code-kw">console.log</span>(nama); <span style="color:#6a9955;">// Menampilkan output ke Console Browser</span>
+            </div>
+
+            <div class="task-list">
+                <h4>🎯 Tugas Praktik Minggu 1:</h4>
+                <ul>
+                    <li>Buat file <code>script.js</code>, lalu hubungkan ke file HTML Anda menggunakan tag <code>&lt;script src="script.js"&gt;&lt;/script&gt;</code> di bagian paling bawah <em>body</em> HTML.</li>
+                    <li>Buat variabel untuk menyimpan Nama, Tahun Lahir, dan Tahun Sekarang.</li>
+                    <li>Hitung umur Anda dengan rumus (Tahun Sekarang - Tahun Lahir), lalu tampilkan hasilnya dengan <code>alert(umur)</code>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-section">
+            <h2>📅 Minggu 2: Logika Percabangan (If / Else)</h2>
+            <p>Sama seperti fungsi IF di Excel, JavaScript juga bisa mengambil keputusan berdasarkan kondisi.</p>
+
+            <div class="code-box">
+<span class="code-kw">let</span> nilai = <span class="code-num">85</span>;<br>
+<br>
+<span class="code-kw">if</span> (nilai >= <span class="code-num">80</span>) {<br>
+&nbsp;&nbsp;alert(<span class="code-str">"Selamat, Anda Lulus!"</span>);<br>
+} <span class="code-kw">else</span> {<br>
+&nbsp;&nbsp;alert(<span class="code-str">"Maaf, Anda Remedial."</span>);<br>
+}
+            </div>
+
+            <div class="task-list">
+                <h4>🎯 Tugas Praktik Minggu 2:</h4>
+                <ul>
+                    <li>Gunakan fungsi <code>prompt("Masukkan password:")</code> untuk meminta pengguna mengetik sandi.</li>
+                    <li>Buat logika IF: Jika sandi yang diketik adalah "nusaskill123", munculkan alert "Akses Diterima". Jika salah, munculkan "Akses Ditolak".</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-section">
+            <h2>📅 Minggu 3: DOM (Document Object Model)</h2>
+            <p>DOM adalah cara JavaScript berbicara dengan HTML. Kita bisa mengubah teks atau warna di web langsung dari kode JavaScript saat tombol diklik.</p>
+            <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Programming Interaktif" class="img-fluid">
+
+            <h3>Mengambil Elemen HTML</h3>
+            <div class="code-box">
+<span style="color:#6a9955;">// HTML: &lt;h1 id="judul"&gt;Halo&lt;/h1&gt;</span><br>
+<br>
+<span class="code-kw">let</span> teks = document.getElementById(<span class="code-str">"judul"</span>);<br>
+teks.innerHTML = <span class="code-str">"Teks ini diubah oleh JavaScript!"</span>;<br>
+teks.style.color = <span class="code-str">"red"</span>; <span style="color:#6a9955;">// Mengubah warna jadi merah</span>
+            </div>
+
+            <div class="task-list">
+                <h4>🎯 Tugas Praktik Minggu 3:</h4>
+                <ul>
+                    <li>Buat satu paragraf HTML dengan tulisan "Lampu Mati" dan <code>id="status"</code>.</li>
+                    <li>Buat sebuah tombol (button) "Nyalakan Lampu".</li>
+                    <li>Gunakan JavaScript untuk membuat fungsi: saat tombol diklik, teks berubah menjadi "Lampu Menyala", dan warnanya menjadi kuning.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-section">
+            <h2>📅 Minggu 4: Final Project - Aplikasi Kalkulator Mini</h2>
+            <p>Sebagai kelulusan program Advance, Anda ditantang untuk membuat aplikasi web yang berfungsi memecahkan masalah matematika.</p>
+
+            <div class="task-list">
+                <h4>🎯 Tugas Praktik Minggu 4 (Final Modul 6):</h4>
+                <ul>
+                    <li>Buat antarmuka (HTML/CSS) yang memiliki: 2 kolom input angka (Input 1 dan Input 2), 1 tombol "Tambah", dan 1 paragraf kosong untuk menampilkan "Hasil".</li>
+                    <li>Tulis JavaScript untuk: Mengambil nilai dari Input 1 dan Input 2, menjumlahkannya (pastikan formatnya angka / menggunakan <code>parseInt()</code>), dan menampilkan hasil penjumlahannya ke layar.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tugas-box" style="margin: 0 auto; max-width: 800px;">
+        <h3 style="text-align: center; color: #d35400;">📥 Kumpulkan Tugas Akhir Pemrograman</h3>
+        <p style="color: #7f8c8d; font-size: 15px; margin-bottom: 25px; text-align: center; line-height: 1.6;">
+            Masukkan semua file HTML dan <strong>.js</strong> dari Minggu 1 sampai Final Project ke dalam satu folder Google Drive (Akses: Publik).
+        </p>
+        
+        <form id="taskForm">
+            <select id="pilihanMinggu" style="margin-bottom: 20px; width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;">
+                <option value="Tugas Modul 6 - JavaScript">Paket Tugas Modul 6 (Minggu 1 - 4)</option>
+            </select>
+            <input type="url" id="linkTugas" placeholder="Contoh: https://drive.google.com/drive/folders/xxxxx" required style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;">
+            <button type="submit" class="btn-submit" id="submitBtn" style="width: 100%; font-size: 18px; padding: 15px; background: #d35400;">Kirim Tugas Modul 6 (Final)</button>
+            <p id="msg" style="text-align: center; font-weight: bold; margin-top: 15px;"></p>
+        </form>
+    </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
