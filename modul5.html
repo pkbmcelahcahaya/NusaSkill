@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 5: Web Dasar (HTML/CSS) - NusaSkill</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .module-header { text-align: center; margin-bottom: 40px; padding: 30px; background: linear-gradient(135deg, #e65100, #ff9800); color: white; border-radius: 10px; }
+        .module-header h1 { margin: 0 0 10px 0; font-size: 28px; }
+        .module-content { background: #ffffff; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 40px; line-height: 1.8; color: #333; }
+        .week-section { margin-top: 40px; padding-top: 20px; border-top: 2px dashed #ecf0f1; }
+        .week-section h2 { color: #bf360c; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .week-section h3 { color: #e65100; margin-top: 25px; }
+        .img-fluid { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .code-box { background: #282c34; color: #abb2bf; padding: 15px 20px; margin: 15px 0; border-radius: 5px; font-family: 'Courier New', Courier, monospace; overflow-x: auto; }
+        .code-tag { color: #e06c75; }
+        .code-attr { color: #d19a66; }
+        .code-val { color: #98c379; }
+        .task-list { background: #fff3e0; padding: 20px; border-radius: 8px; border: 1px solid #ffe0b2; margin-top: 30px; }
+        .task-list h4 { color: #e65100; margin-top: 0; font-size: 18px; }
+        .task-list ul { padding-left: 20px; margin-bottom: 0; color: #e65100; }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="brand-container">
+        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/NusaSkill.png" alt="Logo NusaSkill" class="logo">
+        <h2>NusaSkill LMS</h2>
+    </div>
+    <a href="dashboard.html" style="background: #e67e22; padding: 8px 15px; border-radius: 5px; color: white; text-decoration: none;">Kembali ke Dashboard</a>
+</div>
+
+<div class="container">
+    <div class="module-header">
+        <h1>Modul 5: Pemrograman Web Dasar (HTML & CSS)</h1>
+        <p>Tahap Ahli (Advance) | Fokus: Membuat Website Sederhana dari Nol</p>
+        <p style="font-size: 14px; opacity: 0.8;">Instruktur: Admin Budi</p>
+    </div>
+
+    <div class="module-content">
+        <p style="font-size: 18px; text-align: center; margin-bottom: 40px;">Selamat datang di level Advance! Di sini Anda akan belajar bahasa "Kerangka" (HTML) dan bahasa "Riasan" (CSS) untuk membuat sebuah halaman website asli.</p>
+
+        <div class="week-section">
+            <h2>📅 Minggu 1: Struktur Dasar HTML</h2>
+            <p>HTML (HyperText Markup Language) bukanlah bahasa pemrograman, melainkan bahasa <em>markup</em> untuk menyusun kerangka konten di web.</p>
+            
+            <h3>1. Persiapan Alat (Text Editor)</h3>
+            <p>Untuk menulis kode, kita butuh aplikasi khusus. Silakan download dan instal <strong>Visual Studio Code (VS Code)</strong> di komputer Anda (Gratis).</p>
+
+            <h3>2. Anatomi Tag HTML</h3>
+            <p>Sebagian besar tag HTML memiliki pembuka <code>&lt;tag&gt;</code> dan penutup <code>&lt;/tag&gt;</code>.</p>
+            
+            <div class="code-box">
+<span class="code-tag">&lt;!DOCTYPE html&gt;</span><br>
+<span class="code-tag">&lt;html&gt;</span><br>
+&nbsp;&nbsp;<span class="code-tag">&lt;head&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;title&gt;</span>Website Pertamaku<span class="code-tag">&lt;/title&gt;</span><br>
+&nbsp;&nbsp;<span class="code-tag">&lt;/head&gt;</span><br>
+&nbsp;&nbsp;<span class="code-tag">&lt;body&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;h1&gt;</span>Halo Dunia!<span class="code-tag">&lt;/h1&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>Ini adalah paragraf pertama saya.<span class="code-tag">&lt;/p&gt;</span><br>
+&nbsp;&nbsp;<span class="code-tag">&lt;/body&gt;</span><br>
+<span class="code-tag">&lt;/html&gt;</span>
+            </div>
+
+            <div class="task-list">
+                <h4>🎯 Tugas Praktik Minggu 1:</h4>
+                <ul>
+                    <li>Buka VS Code, buat file baru bernama <strong>index.html</strong>.</li>
+                    <li>Ketik struktur kode HTML di atas ke dalam file tersebut.</li>
+                    <li>Ubah teks "Halo Dunia" menjadi nama Anda. Simpan (Ctrl+S) dan buka file tersebut menggunakan Google Chrome.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-section">
+            <h2>📅 Minggu 2: Gambar, Link, dan Daftar (List)</h2>
+            <p>Website yang isinya hanya teks akan membosankan. Mari kita tambahkan gambar dan link yang bisa diklik.</p>
+
+            <h3>1. Memasukkan Gambar</h3>
+            <p>Gunakan tag <code>&lt;img&gt;</code>. Tag ini spesial karena tidak butuh penutup.</p>
+            <div class="code-box">
+                <span class="code-tag">&lt;img</span> <span class="code-attr">src=</span><span class="code-val">"foto-saya.jpg"</span> <span class="code-attr">alt=</span><span class="code-val">"Foto Profil"</span> <span class="code-attr">width=</span><span class="code-val">"200"</span><span class="code-tag">&gt;</span>
+            </div>
+
+            <h3>2. Membuat Tautan (Link)</h3>
+            <p>Gunakan tag <code>&lt;a&gt;</code> (Anchor). Atribut <em>href</em> berisi alamat web tujuan.</p>
+            <div class="code-box">
+                <span class="code-tag">&lt;a</span> <span class="code-attr">href=</span><span class="code-val">"https://google.com"</span><span class="code-tag">&gt;</span>Klik untuk buka Google<span class="code-tag">&lt;/a&gt;</span>
+            </div>
+
+            <div class="task-list">
+                <h4>🎯 Tugas Praktik Minggu 2:</h4>
+                <ul>
+                    <li>Lanjutkan file HTML minggu lalu. Tambahkan sebuah foto (gambar apa saja) di bawah paragraf.</li>
+                    <li>Di bawah gambar, buat tulisan "Klik di sini untuk melihat portofolio saya" yang bisa diklik (Link), arahkan link tersebut ke instagram/sosmed Anda.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-section">
+            <h2>📅 Minggu 3: Mempercantik dengan CSS Dasar</h2>
+            <p>HTML adalah kerangkanya, CSS (Cascading Style Sheets) adalah cat dan bajunya. CSS bertugas mengubah warna, ukuran, dan posisi.</p>
+            <img src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Kode Komputer" class="img-fluid">
+
+            <h3>Menulis CSS di dalam HTML (Internal CSS)</h3>
+            <p>Kita meletakkan CSS di dalam tag <code>&lt;style&gt;</code> di dalam bagian <code>&lt;head&gt;</code>.</p>
+            
+            <div class="code-box">
+<span class="code-tag">&lt;style&gt;</span><br>
+&nbsp;&nbsp;<span class="code-attr">body</span> {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">background-color</span>: <span class="code-val">#f0f8ff</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">font-family</span>: <span class="code-val">Arial, sans-serif</span>;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="code-attr">h1</span> {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">color</span>: <span class="code-val">blue</span>;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-tag">text-align</span>: <span class="code-val">center</span>;<br>
+&nbsp;&nbsp;}<br>
+<span class="code-tag">&lt;/style&gt;</span>
+            </div>
+
+            <div class="task-list">
+                <h4>🎯 Tugas Praktik Minggu 3:</h4>
+                <ul>
+                    <li>Tambahkan blok <code>&lt;style&gt;</code> di file HTML Anda.</li>
+                    <li>Ubah warna latar belakang web Anda menjadi warna kesukaan Anda (bisa gunakan kata bahasa Inggris seperti: red, yellow, lightgreen).</li>
+                    <li>Ubah warna teks Judul (H1) menjadi putih.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-section">
+            <h2>📅 Minggu 4: Final Project - Biodata / CV Web</h2>
+            <p>Sekarang saatnya menggabungkan struktur HTML dan desain CSS menjadi sebuah halaman profil (Curriculum Vitae) sederhana.</p>
+
+            <div class="task-list">
+                <h4>🎯 Tugas Praktik Minggu 4 (Final Modul 5):</h4>
+                <ul>
+                    <li>Buat satu file baru bernama <strong>cv-nama.html</strong>.</li>
+                    <li>Web harus memiliki:
+                        <ol>
+                            <li>Foto profil (tengah layar).</li>
+                            <li>Judul: Nama Lengkap Anda.</li>
+                            <li>Subjudul: Profesi atau "Siswa NusaSkill".</li>
+                            <li>Daftar (List) Riwayat Pendidikan.</li>
+                            <li>Desain (CSS) yang rapi: Teks berada di tengah, ada warna background, dan font yang nyaman dibaca.</li>
+                        </ol>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tugas-box" style="margin: 0 auto; max-width: 800px;">
+        <h3 style="text-align: center; color: #e65100;">📥 Kumpulkan Tugas HTML & CSS</h3>
+        <p style="color: #7f8c8d; font-size: 15px; margin-bottom: 25px; text-align: center; line-height: 1.6;">
+            Masukkan semua file berakhiran <strong>.html</strong> (beserta file gambarnya) ke dalam satu folder Google Drive. Masukkan link folder tersebut ke kolom di bawah.
+        </p>
+        
+        <form id="taskForm">
+            <select id="pilihanMinggu" style="margin-bottom: 20px; width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;">
+                <option value="Tugas Modul 5 - Web Dasar">Paket Tugas Modul 5 (Minggu 1 - 4)</option>
+            </select>
+            <input type="url" id="linkTugas" placeholder="Contoh: https://drive.google.com/drive/folders/xxxxx" required style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;">
+            <button type="submit" class="btn-submit" id="submitBtn" style="width: 100%; font-size: 18px; padding: 15px; background: #e65100;">Kirim Tugas Modul 5</button>
+            <p id="msg" style="text-align: center; font-weight: bold; margin-top: 15px;"></p>
+        </form>
+    </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
