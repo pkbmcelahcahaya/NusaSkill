@@ -7,7 +7,12 @@
     <style>
         body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background-color: #f4f7f6; color: #333; }
         .navbar { background-color: #2c3e50; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; }
+        
+        /* Tambahan CSS untuk Logo dan pembungkus judul */
+        .brand-container { display: flex; align-items: center; }
+        .logo { height: 40px; margin-right: 15px; } /* Atur tinggi logo di sini */
         .navbar h2 { margin: 0; color: #3498db; }
+        
         .navbar a { color: white; text-decoration: none; margin-left: 20px; font-weight: bold; }
         .navbar a:hover { color: #3498db; }
         
@@ -28,7 +33,10 @@
 <body>
 
 <div class="navbar">
-    <h2>NusaSkill LMS</h2>
+    <div class="brand-container">
+        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/NusaSkill.png" alt="Logo NusaSkill" class="logo">
+        <h2>NusaSkill LMS</h2>
+    </div>
     <div>
         <a href="kurikulum.html">Kurikulum</a>
         <a href="pendaftaran.html" style="background: #e67e22; padding: 8px 15px; border-radius: 5px;">Daftar Baru</a>
