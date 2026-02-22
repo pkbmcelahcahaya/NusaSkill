@@ -1,1 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Instruktur - NusaSkill</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #2c3e50; margin: 0; color: white; }
+        .navbar { background-color: #1a252f; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .navbar h2 { margin: 0; color: #e67e22; }
+        .logout-btn { background-color: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        
+        .container { padding: 30px; max-width: 1100px; margin: auto; }
+        table { width: 100%; border-collapse: collapse; background: white; color: #333; border-radius: 8px; overflow: hidden; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #34495e; color: white; }
+        
+        .input-nilai { width: 60px; padding: 5px; text-align: center; }
+        .input-feedback { width: 90%; padding: 5px; }
+        .btn-save { background-color: #2ecc71; color: white; border: none; padding: 6px 12px; border-radius: 3px; cursor: pointer; font-weight: bold; }
+        .btn-save:hover { background-color: #27ae60; }
+    </style>
+</head>
+<body>
 
+<div class="navbar">
+    <h2>⚙️ Panel Admin & Instruktur</h2>
+    <button class="logout-btn" onclick="logout()">Keluar Area Admin</button>
+</div>
+
+<div class="container">
+    <h2>Antrean Tugas Masuk</h2>
+    <p>Silakan periksa link tugas peserta, berikan nilai (0-100), dan ketik feedback. Klik Simpan untuk memperbarui database otomatis.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID Tugas</th>
+                <th>ID Peserta</th>
+                <th>Modul</th>
+                <th>Link Tugas</th>
+                <th>Nilai (0-100)</th>
+                <th>Komentar / Feedback</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody id="gradingBody">
+            <tr><td colspan="7" style="text-align:center;">Memuat antrean tugas...</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz9qgmLdUnj6-4UfhNHnlqPKVC42NVVdmDWmGdbVHTIlJVedJKQtQbWQ3NF0CSkB9t_RA/exec";
+
+    window.onload = function() {
+        const user = JSON.parse(localStorage.getItem("userLMS"));
+        // Proteksi Halaman: Usir jika bukan Instruktur
+        if (!user || user.role !== "Instruktur") {
+            alert("Akses Ditolak! Anda bukan Instruktur.");
+            window.location.href = "index.html";
+        } else {
+            loadSubmissions();
+        }
+    };
+
+    function logout() {
+        localStorage.removeItem("userLMS");
+        window.location.href = "index.html";
+    }
+
+    async function loadSubmissions() {
+        try {
+            let response = await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "getAllSubmissions" }) });
+            let result = await response.json();
+            
+            const tbody = document.getElementById("gradingBody");
+            tbody.innerHTML = "";
+
+            if(result.data.length === 0) {
+                tbody.innerHTML = "<tr><td colspan='7' style='text-align:center;'>Belum ada tugas yang masuk.</td></tr>";
+                return;
+            }
+
+            result.data.forEach(sub => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${sub.subId}</td>
+                        <td>${sub.userId}</td>
+                        <td>${sub.courseId}</td>
+                        <td><a href="${sub.linkTugas}" target="_blank" style="color:#3498db;">Buka Tugas</a></td>
+                        <td><input type="number" id="nilai_${sub.subId}" class="input-nilai" value="${sub.nilai === 'Belum Dinilai' ? '' : sub.nilai}"></td>
+                        <td><input type="text" id="feedback_${sub.subId}" class="input-feedback" value="${sub.feedback === 'Belum ada feedback' ? '' : sub.feedback}"></td>
+                        <td><button class="btn-save" onclick="saveGrade('${sub.subId}')">Simpan</button></td>
+                    </tr>
+                `;
+            });
+        } catch (e) {
+            document.getElementById("gradingBody").innerHTML = "<tr><td colspan='7' style='text-align:center; color:red;'>Gagal memuat database.</td></tr>";
+        }
+    }
+
+    async function saveGrade(subId) {
+        const nilai = document.getElementById("nilai_" + subId).value;
+        const feedback = document.getElementById("feedback_" + subId).value;
+
+        if(nilai === "" || feedback === "") return alert("Nilai dan Feedback harus diisi!");
+
+        const btn = event.target;
+        btn.innerText = "...";
+
+        try {
+            let response = await fetch(SCRIPT_URL, {
+                method: "POST",
+                body: JSON.stringify({ action: "updateGrade", subId: subId, nilai: nilai, feedback: feedback })
+            });
+            let result = await response.json();
+            
+            if(result.status === "success") {
+                btn.innerText = "Tersimpan ✔";
+                btn.style.backgroundColor = "#95a5a6";
+            }
+        } catch (e) {
+            alert("Gagal menyimpan data.");
+            btn.innerText = "Simpan";
+        }
+    }
+</script>
+</body>
+</html>
