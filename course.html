@@ -1,41 +1,77 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruang Kelas - NusaSkill</title>
-    
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruang Kelas - NusaSkill</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Menyesuaikan gaya agar seragam dengan halaman Modul lainnya */
+        .module-header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding: 30px; 
+            background: linear-gradient(135deg, #2c3e50, #34495e); 
+            color: white; 
+            border-radius: 10px; 
+        }
+        .module-header h1 { margin: 0 0 10px 0; font-size: 28px; }
+        .materi-box, .tugas-box { 
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 10px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            margin-bottom: 40px; 
+        }
+        .tugas-box { max-width: 800px; margin: 0 auto; }
+    </style>
 </head>
 <body>
 
 <div class="navbar">
-    <div class="brand-container">
-        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/NusaSkill.png" alt="Logo NusaSkill" class="logo">
-        <h2>NusaSkill LMS</h2>
-    </div>
-    <a href="dashboard.html" style="background: #e67e22; padding: 8px 15px; border-radius: 5px; color: white;">Kembali ke Dashboard</a>
+    <div class="brand-container">
+        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/NusaSkill.png" alt="Logo NusaSkill" class="logo">
+        <h2>NusaSkill LMS</h2>
+    </div>
+    <a href="dashboard.html" style="background: #e67e22; padding: 8px 15px; border-radius: 5px; color: white; text-decoration: none;">Kembali ke Dashboard</a>
 </div>
 
 <div class="container">
-    <div class="materi-box">
-        <h2 id="courseTitle">Memuat Materi...</h2>
-        <p>Silakan pelajari modul atau tonton video materi melalui tombol di bawah ini sebelum mengerjakan tugas.</p>
-        <a href="#" id="courseLink" target="_blank" class="btn-materi">📖 Buka Materi / Video</a>
-    </div>
+    <div class="module-header">
+        <h1 id="courseTitle">Memuat Materi...</h1>
+        <p>Pelajari modul dan kerjakan tugas sesuai instruksi yang diberikan.</p>
+    </div>
 
-    <div class="tugas-box">
-        <h3>Form Pengumpulan Tugas</h3>
-        <p style="color: #7f8c8d; font-size: 14px; margin-bottom: 15px;">
-            Pastikan tugas Anda diunggah ke Google Drive dan akses linknya diubah menjadi "Siapa saja yang memiliki link".
-        </p>
-        
-        <form id="taskForm">
-            <input type="url" id="linkTugas" placeholder="Masukkan Link Tugas (Contoh: https://drive.google.com/...)" required>
-            <button type="submit" class="btn-submit" id="submitBtn">Kirim Tugas</button>
-            <p id="msg" style="text-align: center; font-weight: bold; margin-top: 10px;"></p>
-        </form>
-    </div>
+    <div class="materi-box" style="text-align: center;">
+        <h3 style="margin-bottom: 15px; color: #2c3e50;">Akses Materi Utama</h3>
+        <p style="margin-bottom: 25px; color: #7f8c8d;">Silakan pelajari modul PDF atau tonton video materi melalui tombol di bawah ini sebelum mengerjakan tugas.</p>
+        <a href="#" id="courseLink" target="_blank" class="btn-materi" style="display: inline-block; width: auto; padding: 12px 30px; border-radius: 5px; background: #3498db; color: white; text-decoration: none;">📖 Buka Materi / Video</a>
+    </div>
+
+    <div class="tugas-box">
+        <h3 style="text-align: center; color: #e67e22;">📥 Form Pengumpulan Tugas</h3>
+        <p style="color: #7f8c8d; font-size: 15px; margin-bottom: 25px; text-align: center; line-height: 1.6;">
+            Pastikan tugas Anda diunggah ke Google Drive dan akses linknya diubah menjadi <strong>"Siapa saja yang memiliki link"</strong> (Anyone with the link).
+        </p>
+        
+        <form id="taskForm">
+            <label style="font-weight: bold; margin-bottom: 8px; display: block;">Pilih Kategori Tugas:</label>
+            <select id="pilihanMinggu" style="margin-bottom: 20px; width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;" required>
+                <option value="" disabled selected>-- Pilih Modul / Tugas --</option>
+                <option value="Tugas Minggu 1">Tugas Minggu 1</option>
+                <option value="Tugas Minggu 2">Tugas Minggu 2</option>
+                <option value="Tugas Minggu 3">Tugas Minggu 3</option>
+                <option value="Tugas Akhir / Final">Tugas Akhir / Final Project</option>
+            </select>
+
+            <label style="font-weight: bold; margin-bottom: 8px; display: block;">Link Google Drive Tugas Anda:</label>
+            <input type="url" id="linkTugas" placeholder="Contoh: https://drive.google.com/drive/folders/xxxxx" required style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;">
+            
+            <button type="submit" class="btn-submit" id="submitBtn" style="width: 100%; font-size: 18px; padding: 15px;">Kirim Tugas</button>
+            <p id="msg" style="text-align: center; font-weight: bold; margin-top: 15px;"></p>
+        </form>
+    </div>
 </div>
 
 <script src="assets/js/app.js"></script>
