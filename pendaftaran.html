@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran - NusaSkill</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #2c3e50; }
+        label { font-weight: bold; display: block; margin-top: 15px; }
+        input, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .btn-submit { background-color: #3498db; color: white; padding: 12px; width: 100%; border: none; border-radius: 5px; margin-top: 20px; font-size: 16px; cursor: pointer; font-weight: bold; }
+        .btn-submit:hover { background-color: #2980b9; }
+        
+        /* Area Pembayaran (Disembunyikan di awal) */
+        #paymentArea { display: none; text-align: center; margin-top: 20px; padding: 20px; background-color: #e8f8f5; border: 1px solid #2ecc71; border-radius: 8px; }
+        .dana-box { font-size: 20px; font-weight: bold; color: #3498db; margin: 10px 0; }
+        .btn-wa { background-color: #25D366; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; margin-top: 15px; }
+    </style>
+</head>
+<body>
 
+<div class="container">
+    <h2>Form Pendaftaran NusaSkill</h2>
+    
+    <form id="regForm">
+        <label>Nama Lengkap (Sesuai KTP)</label>
+        <input type="text" id="regNama" required>
+
+        <label>Email Aktif</label>
+        <input type="email" id="regEmail" required>
+
+        <label>Buat Password (Untuk Login LMS)</label>
+        <input type="password" id="regPass" required>
+
+        <label>No. HP / WhatsApp Aktif</label>
+        <input type="number" id="regHp" required>
+
+        <label>Pilih Program</label>
+        <select id="regLevel">
+            <option value="Basic">🟢 Basic (Rp 450.000)</option>
+            <option value="Intermediate">🟡 Intermediate (Rp 650.000)</option>
+            <option value="Advance">🔴 Advance (Rp 1.200.000)</option>
+        </select>
+
+        <label>Durasi</label>
+        <select id="regDurasi">
+            <option value="3 Bulan">3 Bulan</option>
+            <option value="6 Bulan">6 Bulan (Hanya Advance)</option>
+        </select>
+
+        <button type="submit" class="btn-submit" id="regBtn">Daftar & Lanjut Pembayaran</button>
+        <p id="regMsg" style="text-align: center; font-weight: bold;"></p>
+    </form>
+
+    <div id="paymentArea">
+        <h3 style="color:#2ecc71;">Pendaftaran Berhasil Dicatat!</h3>
+        <p>Langkah Terakhir: Silakan selesaikan pembayaran melalui transfer DANA ke nomor di bawah ini:</p>
+        <div class="dana-box">
+            📲 DANA: 081223546686<br>
+            A.n: Admin NusaSkill
+        </div>
+        <p>Setelah transfer, klik tombol di bawah ini untuk konfirmasi ke WhatsApp Admin. Akun LMS Anda akan segera diaktifkan.</p>
+        <a href="#" target="_blank" id="waLink" class="btn-wa">✅ Konfirmasi Pembayaran via WhatsApp</a>
+    </div>
+
+</div>
+
+<script>
+    const SCRIPT_URL = "URL_GOOGLE_APPS_SCRIPT_ANDA_DI_SINI"; // Ganti dengan URL Anda
+
+    document.getElementById("regForm").addEventListener("submit", async function(e) {
+        e.preventDefault();
+        
+        const btn = document.getElementById("regBtn");
+        const msg = document.getElementById("regMsg");
+        btn.innerText = "Memproses Data...";
+        
+        const nama = document.getElementById("regNama").value;
+        const level = document.getElementById("regLevel").value;
+
+        const data = {
+            action: "register",
+            nama: nama,
+            email: document.getElementById("regEmail").value,
+            password: document.getElementById("regPass").value,
+            noHp: document.getElementById("regHp").value,
+            level: level,
+            durasi: document.getElementById("regDurasi").value
+        };
+
+        try {
+            let response = await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(data) });
+            let result = await response.json();
+
+            if (result.status === "success") {
+                // Sembunyikan form, tampilkan area pembayaran
+                document.getElementById("regForm").style.display = "none";
+                document.getElementById("paymentArea").style.display = "block";
+
+                // Siapkan Link WhatsApp otomatis
+                let tgl = new Date().toLocaleDateString('id-ID');
+                let waText = `Halo Admin, saya ingin konfirmasi pembayaran NusaSkill.%0A%0ANama: ${nama}%0AProgram: ${level}%0ATanggal: ${tgl}%0A%0A(Lampirkan bukti transfer di sini)`;
+                document.getElementById("waLink").href = `https://wa.me/6281223546686?text=${waText}`;
+                
+            } else {
+                msg.style.color = "red";
+                msg.innerText = result.message; // Muncul jika email sudah ada
+                btn.innerText = "Daftar & Lanjut Pembayaran";
+            }
+        } catch (error) {
+            msg.style.color = "red";
+            msg.innerText = "Koneksi gagal. Coba lagi.";
+            btn.innerText = "Daftar & Lanjut Pembayaran";
+        }
+    });
+</script>
+</body>
+</html>
