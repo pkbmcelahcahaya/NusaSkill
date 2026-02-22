@@ -144,22 +144,60 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --------------------------------------------------
-    // 4. LOGIKA HALAMAN COURSE (course.html)
+    // 4. LOGIKA HALAMAN COURSE (course.html) DENGAN PENGUNCIAN KETAT
     // --------------------------------------------------
     const taskForm = document.getElementById("taskForm");
     if (taskForm) {
         if (!user) return window.location.href = "index.html";
 
         const urlParams = new URLSearchParams(window.location.search);
+        const modId = urlParams.get('id'); // Contoh: CRS-001
+        
+        // --- 1. PEMETAAN LEVEL MODUL ---
+        const courseLevelMap = {
+            "CRS-001": "Basic",
+            "CRS-002": "Basic",
+            "CRS-003": "Intermediate",
+            "CRS-004": "Intermediate",
+            "CRS-005": "Advance",
+            "CRS-006": "Advance"
+        };
+        
+        // --- 2. SISTEM KEAMANAN (VALIDASI KETAT) ---
+        const levelPeserta = user.level;
+        const levelModul = courseLevelMap[modId];
+        let isAllowed = false;
+
+        if (user.role === "Instruktur") {
+            isAllowed = true; // Instruktur bebas ke mana saja
+        } else if (levelModul === levelPeserta) {
+            isAllowed = true; // Peserta hanya boleh akses levelnya sendiri
+        }
+
+        if (!isAllowed) {
+            alert(`🔒 Akses Ditolak! Anda terdaftar di paket ${levelPeserta}. Anda tidak memiliki izin untuk mengakses materi ${levelModul || 'ini'}.`);
+            window.location.href = "dashboard.html";
+            return; // Hentikan script di sini
+        }
+        // --- AKHIR SISTEM KEAMANAN ---
+
         document.getElementById("courseTitle").innerText = urlParams.get('title') || "Materi Kelas";
-        document.getElementById("courseLink").href = urlParams.get('link') || "#";
+        
+        // Atur link Buka Modul berdasarkan CRS-ID yang baru
+        const btnMateri = document.getElementById("courseLink");
+        if(modId === "CRS-001") btnMateri.href = "modul1.html";
+        else if(modId === "CRS-002") btnMateri.href = "modul2.html";
+        else if(modId === "CRS-003") btnMateri.href = "modul3.html";
+        else if(modId === "CRS-004") btnMateri.href = "modul4.html";
+        else if(modId === "CRS-005") btnMateri.href = "modul5.html";
+        else if(modId === "CRS-006") btnMateri.href = "modul6.html";
+        else btnMateri.href = urlParams.get('link') || "#";
 
         taskForm.addEventListener("submit", async function(e) {
             e.preventDefault();
             const btn = document.getElementById("submitBtn");
             const msg = document.getElementById("msg");
             
-            // Mengambil nilai dropdown kategori tugas
             const pilihanMinggu = document.getElementById("pilihanMinggu") ? document.getElementById("pilihanMinggu").value : "Tugas Akhir";
             const linkTugas = document.getElementById("linkTugas").value;
 
@@ -171,9 +209,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     method: "POST", 
                     body: JSON.stringify({
                         action: "submitTask",
-                        userId: user.id, // Pastikan 'id' atau 'email' sesuai dengan field di database Anda
-                        courseId: urlParams.get('id'),
-                        kategoriTugas: pilihanMinggu, // Menambahkan data kategori tugas
+                        userId: user.id, 
+                        courseId: modId,
+                        kategoriTugas: pilihanMinggu, 
                         linkTugas: linkTugas
                     }) 
                 });
