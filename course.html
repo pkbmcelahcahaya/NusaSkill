@@ -4,27 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruang Kelas - NusaSkill</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f4f7f6; margin: 0; }
-        .navbar { background-color: #2c3e50; padding: 15px 20px; color: white; display: flex; justify-content: space-between; }
-        .navbar h2 { margin: 0; color: #3498db; }
-        .navbar a { color: white; text-decoration: none; font-weight: bold; }
-        
-        .container { padding: 30px; max-width: 800px; margin: auto; }
-        .materi-box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 20px; text-align: center; }
-        .btn-materi { background-color: #2ecc71; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; margin-top: 15px; }
-        
-        .tugas-box { background: white; padding: 30px; border-radius: 10px; border-top: 5px solid #e67e22; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-        .btn-submit { background-color: #3498db; color: white; border: none; padding: 12px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px; }
-        .btn-submit:hover { background-color: #2980b9; }
-    </style>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="navbar">
-    <h2>NusaSkill LMS</h2>
-    <a href="dashboard.html">Kembali ke Dashboard</a>
+    <div class="brand-container">
+        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/NusaSkill.png" alt="Logo NusaSkill" class="logo">
+        <h2>NusaSkill LMS</h2>
+    </div>
+    <a href="dashboard.html" style="background: #e67e22; padding: 8px 15px; border-radius: 5px;">Kembali ke Dashboard</a>
 </div>
 
 <div class="container">
@@ -36,57 +26,19 @@
 
     <div class="tugas-box">
         <h3>Form Pengumpulan Tugas</h3>
-        <p style="color: #7f8c8d; font-size: 14px;">Pastikan tugas Anda diunggah ke Google Drive dan akses linknya diubah menjadi "Siapa saja yang memiliki link".</p>
+        <p style="color: #7f8c8d; font-size: 14px; margin-bottom: 15px;">
+            Pastikan tugas Anda diunggah ke Google Drive dan akses linknya diubah menjadi "Siapa saja yang memiliki link".
+        </p>
+        
         <form id="taskForm">
-            <input type="url" id="linkTugas" placeholder="https://drive.google.com/..." required>
+            <input type="url" id="linkTugas" placeholder="Masukkan Link Tugas (Contoh: https://drive.google.com/...)" required>
             <button type="submit" class="btn-submit" id="submitBtn">Kirim Tugas</button>
+            <p id="msg" style="text-align: center; font-weight: bold; margin-top: 10px;"></p>
         </form>
-        <p id="msg" style="text-align: center; font-weight: bold;"></p>
     </div>
 </div>
 
-<script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz9qgmLdUnj6-4UfhNHnlqPKVC42NVVdmDWmGdbVHTIlJVedJKQtQbWQ3NF0CSkB9t_RA/exec";
-    
-    // Ambil parameter dari URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const courseId = urlParams.get('id');
-    const courseTitle = urlParams.get('title');
-    const courseLink = urlParams.get('link');
+<script src="app.js"></script>
 
-    document.getElementById("courseTitle").innerText = courseTitle || "Materi Kelas";
-    document.getElementById("courseLink").href = courseLink || "#";
-
-    document.getElementById("taskForm").addEventListener("submit", async function(e) {
-        e.preventDefault();
-        const user = JSON.parse(localStorage.getItem("userLMS"));
-        const btn = document.getElementById("submitBtn");
-        const msg = document.getElementById("msg");
-
-        if(!user) return alert("Sesi habis, silakan login ulang.");
-
-        btn.innerText = "Mengirim...";
-        const data = {
-            action: "submitTask",
-            userId: user.id,
-            courseId: courseId,
-            linkTugas: document.getElementById("linkTugas").value
-        };
-
-        try {
-            let response = await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(data) });
-            let result = await response.json();
-            
-            msg.style.color = "green";
-            msg.innerText = "Tugas berhasil dikirim! Silakan cek halaman Nilai.";
-            btn.innerText = "Kirim Tugas";
-            document.getElementById("taskForm").reset();
-        } catch (error) {
-            msg.style.color = "red";
-            msg.innerText = "Gagal mengirim tugas.";
-            btn.innerText = "Kirim Tugas";
-        }
-    });
-</script>
 </body>
 </html>
