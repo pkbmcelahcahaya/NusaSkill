@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+    <script>
+    const session = JSON.parse(localStorage.getItem("userLMS"));
+    if (!session) {
+        window.location.href = "index.html"; // Jika belum login, tendang ke depan
+    }
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modul 2: MS Word Dasar - NusaSkill</title>
