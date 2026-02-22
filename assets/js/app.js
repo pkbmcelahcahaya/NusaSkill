@@ -2,7 +2,7 @@
    MASTER JAVASCRIPT - NUSASKILL LMS
    ========================================================= */
 
-// GANTI DENGAN URL DEPLOY APPS SCRIPT ANDA
+// URL DEPLOY APPS SCRIPT ANDA
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz9qgmLdUnj6-4UfhNHnlqPKVC42NVVdmDWmGdbVHTIlJVedJKQtQbWQ3NF0CSkB9t_RA/exec";
 
 // Fungsi Logout Global
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     regForm.style.display = "none";
                     document.getElementById("paymentArea").style.display = "block";
                     let tgl = new Date().toLocaleDateString('id-ID');
-                    let waText = `Halo Admin, saya ingin konfirmasi pembayaran NusaSkill.%0A%0ANama: ${nama}%0AProgram: ${level}%0ATanggal: ${tgl}%0A%0A(Lampirkan bukti transfer di sini)`;
+                    let waText = `Halo Admin, saya ingin konfirmasi pendaftaran NusaSkill.%0A%0ANama: ${nama}%0AProgram: ${level}%0ATanggal: ${tgl}%0A%0A(Lampirkan bukti transfer di sini)`;
                     document.getElementById("waLink").href = `https://wa.me/6281223546686?text=${waText}`;
                 } else {
                     msg.style.color = "red";
@@ -128,18 +128,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     result.data.forEach(course => {
                         courseContainer.innerHTML += `
                             <div class="course-card">
-                                <span class="badge">${course.level} - ${course.bulan}</span>
+                                <span style="background:var(--primary-color); color:white; padding:3px 8px; border-radius:3px; font-size:12px;">${course.level} - ${course.bulan}</span>
                                 <h3 style="margin: 10px 0;">${course.judul}</h3>
-                                <p style="color: #7f8c8d; font-size: 14px; margin: 0;">Instruktur: ${course.instruktur}</p>
-                                <button class="btn-masuk" onclick="window.location.href='course.html?id=${course.id}&title=${encodeURIComponent(course.judul)}&link=${encodeURIComponent(course.link)}'">Masuk Kelas</button>
+                                <p style="color: #7f8c8d; font-size: 14px; margin: 0 0 15px 0;">Instruktur: ${course.instruktur}</p>
+                                <button class="btn-action" onclick="window.location.href='course.html?id=${course.id}&title=${encodeURIComponent(course.judul)}&link=${encodeURIComponent(course.link)}'">Masuk Kelas</button>
                             </div>
                         `;
                     });
                 } else {
-                    courseContainer.innerHTML = "<p>Modul belum tersedia.</p>";
+                    courseContainer.innerHTML = "<p>Modul belum tersedia di database Anda.</p>";
                 }
             }).catch(e => {
-                document.getElementById('loadingMsg').innerText = "Gagal memuat modul.";
+                document.getElementById('loadingMsg').innerText = "Gagal memuat modul dari server.";
             });
     }
 
@@ -158,27 +158,37 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             const btn = document.getElementById("submitBtn");
             const msg = document.getElementById("msg");
+            
+            // Mengambil nilai dropdown kategori tugas
+            const pilihanMinggu = document.getElementById("pilihanMinggu") ? document.getElementById("pilihanMinggu").value : "Tugas Akhir";
+            const linkTugas = document.getElementById("linkTugas").value;
+
             btn.innerText = "Mengirim...";
+            btn.style.backgroundColor = "#f39c12";
 
             try {
                 let response = await fetch(SCRIPT_URL, { 
                     method: "POST", 
                     body: JSON.stringify({
                         action: "submitTask",
-                        userId: user.id,
+                        userId: user.id, // Pastikan 'id' atau 'email' sesuai dengan field di database Anda
                         courseId: urlParams.get('id'),
-                        linkTugas: document.getElementById("linkTugas").value
+                        kategoriTugas: pilihanMinggu, // Menambahkan data kategori tugas
+                        linkTugas: linkTugas
                     }) 
                 });
                 await response.json();
+                
                 msg.style.color = "green";
-                msg.innerText = "Tugas berhasil dikirim! Silakan cek halaman Nilai.";
-                btn.innerText = "Kirim Tugas";
+                msg.innerText = "✅ Tugas berhasil dikirim! Silakan cek halaman Nilai.";
+                btn.innerText = "Tugas Terkirim";
+                btn.style.backgroundColor = "#2ecc71";
                 taskForm.reset();
             } catch (error) {
                 msg.style.color = "red";
-                msg.innerText = "Gagal mengirim tugas.";
+                msg.innerText = "❌ Gagal mengirim tugas.";
                 btn.innerText = "Kirim Tugas";
+                btn.style.backgroundColor = "var(--primary-color)";
             }
         });
     }
@@ -203,28 +213,35 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 result.submissions.forEach(sub => {
-                    let statusClass = "menunggu", statusText = "Menunggu";
+                    let statusColor = "orange";
+                    let statusText = "Menunggu";
                     let nilaiAngka = parseInt(sub.nilai);
 
                     if (!isNaN(nilaiAngka)) {
-                        if (nilaiAngka >= 80) { statusClass = "lulus"; statusText = "Lulus"; hasPassed = true; }
-                        else { statusClass = "gagal"; statusText = "Revisi"; }
+                        if (nilaiAngka >= 80) { 
+                            statusColor = "green"; 
+                            statusText = "Lulus"; 
+                            hasPassed = true; 
+                        } else { 
+                            statusColor = "red"; 
+                            statusText = "Revisi"; 
+                        }
                     }
 
                     tbody.innerHTML += `
                         <tr>
                             <td>${sub.courseId}</td>
-                            <td><a href="${sub.link}" target="_blank">Lihat Tugas</a></td>
-                            <td><strong>${sub.nilai}</strong></td>
+                            <td><a href="${sub.link}" target="_blank" style="color:blue;">Lihat Tugas</a></td>
+                            <td><strong style="color:${statusColor};">${sub.nilai}</strong></td>
                             <td>${sub.feedback}</td>
-                            <td><span class="status ${statusClass}">${statusText}</span></td>
+                            <td><span style="color:white; background:${statusColor}; padding:3px 8px; border-radius:3px; font-size:12px;">${statusText}</span></td>
                         </tr>
                     `;
                 });
 
                 if(hasPassed) certBox.style.display = "block";
             }).catch(e => {
-                document.getElementById("tableBody").innerHTML = "<tr><td colspan='5' style='text-align:center; color:red;'>Gagal memuat data.</td></tr>";
+                document.getElementById("tableBody").innerHTML = "<tr><td colspan='5' style='text-align:center; color:red;'>Gagal memuat data rapor.</td></tr>";
             });
     }
 
@@ -243,6 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const btn = event.target;
             const nilai = document.getElementById("nilai_" + subId).value;
             const feedback = document.getElementById("feedback_" + subId).value;
+            
             if(nilai === "" || feedback === "") return alert("Nilai dan Feedback harus diisi!");
             btn.innerText = "...";
 
@@ -252,12 +270,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     body: JSON.stringify({ action: "updateGrade", subId: subId, nilai: nilai, feedback: feedback })
                 });
                 let result = await response.json();
+                
                 if(result.status === "success") {
                     btn.innerText = "Tersimpan ✔";
-                    btn.style.backgroundColor = "#95a5a6";
+                    btn.style.backgroundColor = "#2ecc71";
                 }
             } catch (e) {
-                alert("Gagal menyimpan data.");
+                alert("Gagal menyimpan data ke database.");
                 btn.innerText = "Simpan";
             }
         };
@@ -276,15 +295,15 @@ document.addEventListener("DOMContentLoaded", () => {
                             <td>${sub.subId}</td>
                             <td>${sub.userId}</td>
                             <td>${sub.courseId}</td>
-                            <td><a href="${sub.linkTugas}" target="_blank" style="color:#3498db;">Buka Tugas</a></td>
-                            <td><input type="number" id="nilai_${sub.subId}" class="input-nilai" value="${sub.nilai === 'Belum Dinilai' ? '' : sub.nilai}"></td>
-                            <td><input type="text" id="feedback_${sub.subId}" class="input-feedback" value="${sub.feedback === 'Belum ada feedback' ? '' : sub.feedback}"></td>
-                            <td><button class="btn-save" onclick="saveGrade('${sub.subId}')">Simpan</button></td>
+                            <td><a href="${sub.linkTugas}" target="_blank" style="color:#3498db; font-weight:bold;">Buka Tugas</a></td>
+                            <td><input type="number" id="nilai_${sub.subId}" value="${sub.nilai === 'Belum Dinilai' ? '' : sub.nilai}" style="width:70px; padding:5px;"></td>
+                            <td><input type="text" id="feedback_${sub.subId}" value="${sub.feedback === 'Belum ada feedback' ? '' : sub.feedback}" style="padding:5px; width:90%;"></td>
+                            <td><button onclick="saveGrade('${sub.subId}')" style="background:var(--primary-color); color:white; border:none; padding:8px 12px; border-radius:3px; cursor:pointer;">Simpan</button></td>
                         </tr>
                     `;
                 });
             }).catch(e => {
-                gradingBody.innerHTML = "<tr><td colspan='7' style='text-align:center; color:red;'>Gagal memuat database.</td></tr>";
+                gradingBody.innerHTML = "<tr><td colspan='7' style='text-align:center; color:red;'>Gagal memuat database antrean tugas.</td></tr>";
             });
     }
 
