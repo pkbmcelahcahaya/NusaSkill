@@ -306,5 +306,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 gradingBody.innerHTML = "<tr><td colspan='7' style='text-align:center; color:red;'>Gagal memuat database antrean tugas.</td></tr>";
             });
     }
+// --------------------------------------------------
+    // 7. FOOTER OTOMATIS (LPK Alpha Beta)
+    // --------------------------------------------------
+    const footerElem = document.createElement("footer");
+    
+    // Anda bisa menyesuaikan teksnya di sini
+    footerElem.innerHTML = `&copy; ${new Date().getFullYear()} LPK Alpha Beta. Semua Hak Dilindungi.`;
+    
+    // Gaya (Style) untuk footer agar rapi
+    footerElem.style.textAlign = "center";
+    footerElem.style.padding = "20px";
+    footerElem.style.marginTop = "50px";
+    footerElem.style.backgroundColor = "#2c3e50"; // Warna background gelap
+    footerElem.style.color = "#ecf0f1"; // Warna teks putih/terang
+    footerElem.style.fontSize = "14px";
+    footerElem.style.width = "100%";
+    footerElem.style.bottom = "0";
 
+    // Menambahkan footer ke bagian paling bawah dari body HTML
+    document.body.appendChild(footerElem);
 });
