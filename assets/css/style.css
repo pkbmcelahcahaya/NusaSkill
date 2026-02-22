@@ -1,56 +1,82 @@
 /* =========================================================
-   MASTER STYLESHEET - NUSASKILL LMS (MODERN V2)
+   MASTER STYLESHEET - NUSASKILL LMS (ULTIMATE VERSION)
    ========================================================= */
 
 /* --- 1. IMPORT GOOGLE FONTS --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap');
 
-/* --- 2. CSS VARIABLES (ROOT) --- */
+/* --- 2. CSS VARIABLES (ROOT & LIGHT THEME) --- */
 :root {
-    /* Color Palette */
-    --primary-color: #2563eb;       /* Biru Modern (Tombol Utama/Link) */
-    --primary-dark: #1e40af;        /* Biru Gelap (Navbar/Hover) */
-    --accent-color: #f97316;        /* Oranye (Aksi/Badge) */
+    /* Palet Warna Utama */
+    --primary-color: #2563eb;       
+    --primary-dark: #1e40af;        
+    --accent-color: #f97316;        
     --accent-hover: #ea580c;
-    --success-color: #10b981;       /* Hijau (Lulus/Berhasil) */
-    --danger-color: #ef4444;        /* Merah (Gagal/Logout) */
-    --warning-color: #f59e0b;       /* Kuning (Menunggu) */
+    --success-color: #10b981;       
+    --danger-color: #ef4444;        
+    --warning-color: #f59e0b;       
     
-    --bg-light: #f3f4f6;            /* Latar Belakang Halaman */
-    --bg-white: #ffffff;            /* Latar Belakang Kartu */
-    --text-dark: #1f2937;           /* Teks Utama */
-    --text-muted: #6b7280;          /* Teks Keterangan */
-    --border-color: #e5e7eb;        /* Garis Batas Halus */
+    /* Tema Terang (Default) */
+    --bg-light: #f3f4f6;            
+    --bg-white: #ffffff;            
+    --text-dark: #1f2937;           
+    --text-muted: #6b7280;          
+    --border-color: #e5e7eb;        
 
     /* Shadows & Radius */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --radius-md: 0.5rem;            /* 8px */
-    --radius-lg: 0.75rem;           /* 12px */
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --radius-md: 0.5rem;            
+    --radius-lg: 1rem;           
 }
 
-/* --- 3. GENERAL RESET & TYPOGRAPHY --- */
+/* --- 3. AUTO DARK MODE (TEMA GELAP OTOMATIS) --- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-light: #0f172a;        /* Latar belakang biru sangat gelap */
+        --bg-white: #1e293b;        /* Kartu warna biru abu-abu gelap */
+        --text-dark: #f8fafc;       /* Teks putih terang */
+        --text-muted: #94a3b8;      /* Teks abu-abu terang */
+        --border-color: #334155;    /* Garis batas gelap */
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* --- 4. ANIMASI (KEYFRAMES) --- */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- 5. GENERAL RESET & TYPOGRAPHY --- */
 * { box-sizing: border-box; }
 
 body {
-    font-family: 'Inter', sans-serif; /* Font untuk teks isi */
+    font-family: 'Inter', sans-serif; 
     background-color: var(--bg-light);
     margin: 0;
     color: var(--text-dark);
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6, .navbar a, button, .btn-action {
-    font-family: 'Poppins', sans-serif; /* Font untuk judul & tombol */
-    font-weight: 600;
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 700;
 }
 
-h2, h3 { color: var(--primary-dark); }
+h2, h3 { color: var(--text-dark); }
 a { text-decoration: none; transition: all 0.3s ease; }
-.container { padding: 30px 20px; max-width: 1200px; margin: auto; }
+.container { 
+    padding: 30px 20px; 
+    max-width: 1200px; 
+    margin: auto; 
+    animation: fadeUp 0.6s ease-out forwards; /* Animasi diterapkan di sini */
+}
 
-/* --- 4. MODERN NAVBAR --- */
+/* --- 6. MODERN NAVBAR --- */
 .navbar {
     background: var(--primary-dark);
     padding: 1rem 5%;
@@ -59,203 +85,204 @@ a { text-decoration: none; transition: all 0.3s ease; }
     align-items: center;
     color: white;
     box-shadow: var(--shadow-md);
-    position: sticky; /* Navbar menempel di atas saat di-scroll */
+    position: sticky; 
     top: 0;
     z-index: 100;
 }
 
 .brand-container { display: flex; align-items: center; }
-.logo { height: 40px; margin-right: 12px; }
-.navbar h2 { margin: 0; color: white; font-size: 1.5rem; }
+.logo { height: 42px; margin-right: 12px; }
+.navbar h2 { margin: 0; color: white; font-size: 1.5rem; letter-spacing: 0.5px;}
 
 .navbar div:last-child { display: flex; align-items: center; gap: 20px; }
 
 .navbar a {
-    color: rgba(255,255,255,0.8);
+    color: rgba(255,255,255,0.85);
     font-weight: 600;
     font-size: 0.95rem;
 }
-
 .navbar a:hover { color: white; transform: translateY(-2px); }
 
 /* Tombol Khusus di Navbar (Daftar / Logout) */
 .navbar a[style*="background"], .logout-btn {
     background: var(--accent-color) !important;
-    padding: 8px 20px !important;
-    border-radius: 25px !important; /* Rounded full */
+    padding: 10px 24px !important;
+    border-radius: 30px !important; 
     color: white !important;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-md);
     border: none;
     cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    font-weight: 700;
 }
 .navbar a[style*="background"]:hover, .logout-btn:hover {
     background: var(--accent-hover) !important;
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
 }
 .logout-btn { background-color: var(--danger-color) !important; }
 .logout-btn:hover { background-color: #dc2626 !important; }
 
-/* --- 5. HERO SECTION (Homepage) --- */
+/* --- 7. HERO SECTION (Homepage) --- */
 .hero {
     text-align: center;
     padding: 100px 20px;
-    /* Gradien modern miring */
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
     margin-bottom: 40px;
+    animation: fadeUp 0.5s ease-out forwards;
 }
-.hero h1 { font-size: 3rem; margin-bottom: 15px; letter-spacing: -1px; }
-.hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px auto; opacity: 0.9; }
+.hero h1 { font-size: 3.5rem; margin-bottom: 15px; letter-spacing: -1px; line-height: 1.2;}
+.hero p { font-size: 1.25rem; max-width: 700px; margin: 0 auto 35px auto; opacity: 0.9; font-weight: 400;}
 
-/* --- 6. CARDS & CONTAINERS (General) --- */
+/* --- 8. CARDS & CONTAINERS (General) --- */
 .login-container, .form-container, .welcome-card, .materi-box, .tugas-box, .cert-box, table {
     background: var(--bg-white);
-    padding: 30px;
+    padding: 35px;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     border: 1px solid var(--border-color);
+    animation: fadeUp 0.7s ease-out forwards;
 }
 
-/* --- 7. FORMS & INPUTS (Modern Look) --- */
+/* --- 9. FORMS & INPUTS (Modern Look) --- */
 .login-container { max-width: 450px; margin: -60px auto 50px auto; position: relative; z-index: 10; }
 .form-container { max-width: 700px; margin: 40px auto; }
 
 label { font-weight: 600; display: block; margin-top: 20px; margin-bottom: 8px; color: var(--text-dark); }
 input, select {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid var(--border-color); /* Border lebih tebal */
+    padding: 14px 15px;
+    background-color: var(--bg-light); /* Adaptif dark mode */
+    color: var(--text-dark);
+    border: 2px solid var(--border-color); 
     border-radius: var(--radius-md);
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 input:focus, select:focus {
     outline: none;
-    border-color: var(--primary-color); /* Highlight saat diklik */
+    border-color: var(--primary-color); 
+    background-color: var(--bg-white);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
 }
 
-/* --- 8. BUTTONS (Modern Gradient & Shadow) --- */
+/* --- 10. BUTTONS (Modern Gradient & Shadow) --- */
 .btn, button[type="submit"], .btn-action, .btn-masuk, .btn-materi, .btn-wa, .btn-save, .btn-cert {
     display: inline-block;
     width: 100%;
-    padding: 12px 25px;
+    padding: 14px 25px; /* Lebih besar untuk Mobile */
     border: none;
     border-radius: var(--radius-md);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.05rem;
     cursor: pointer;
     text-align: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Transisi lebih halus */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
     box-shadow: var(--shadow-sm);
     color: white;
+    margin-top: 10px;
 }
 
-button[type="submit"]:hover, .btn:hover, .btn-action:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
+button[type="submit"]:hover, .btn:hover, .btn-action:hover, .btn-masuk:hover, .btn-wa:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
 }
 
 /* Color Variants */
 .btn-login, .btn-materi, .btn-save, button.btn-login { background: var(--success-color); }
-.btn-login:hover, .btn-materi:hover, .btn-save:hover { background: #059669; }
-
 .btn-submit, .btn-masuk, .btn-action { background: var(--primary-color); }
-.btn-submit:hover, .btn-masuk:hover, .btn-action:hover { background: var(--primary-dark); }
-
 .btn-wa { background-color: #25D366; }
-.btn-wa:hover { background-color: #1da851; }
+.btn-cert { background: var(--primary-dark); width: auto; margin-top: 20px;}
 
-.btn-cert { background: var(--primary-dark); width: auto; margin-top: 15px;}
-
-/* --- 9. KURIKULUM & DASHBOARD CARDS (Hover Effects) --- */
+/* --- 11. KURIKULUM & DASHBOARD CARDS (Hover Effects) --- */
 .level-card, .course-card {
     background: var(--bg-white);
     padding: 25px;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     border: 1px solid var(--border-color);
-    overflow: hidden; /* Agar gambar tidak keluar radius */
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
 }
 
 .level-card:hover, .course-card:hover {
-    transform: translateY(-7px); /* Efek melayang saat ditunjuk */
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-8px); 
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-color);
 }
 
-/* Aksen garis warna di kiri card */
-.level-card.basic { border-left: 5px solid var(--success-color); }
-.level-card.inter { border-left: 5px solid var(--warning-color); }
-.level-card.advance { border-left: 5px solid var(--danger-color); }
-.course-card { border-top: 4px solid var(--primary-color); }
+.level-card.basic { border-top: 5px solid var(--success-color); border-left: none; }
+.level-card.inter { border-top: 5px solid var(--warning-color); border-left: none; }
+.level-card.advance { border-top: 5px solid var(--danger-color); border-left: none; }
+.course-card { border-top: 5px solid var(--primary-color); }
 
 .card-img { width: 100%; height: 220px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 20px; }
-.price { font-size: 1.5rem; color: var(--primary-color); font-weight: 800; margin: 15px 0; }
+.price { font-size: 1.6rem; color: var(--primary-color); font-weight: 800; margin: 15px 0; }
 
-.dashboard-container { max-width: 1200px; }
-.welcome-card { border-left: 5px solid var(--success-color); }
 .course-grid {
     display: grid;
-    /* Responsif otomatis: mengisi kolom sebanyak mungkin dg lebar min 320px */
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
-    gap: 25px;
+    gap: 30px;
+    margin-top: 20px;
 }
-.badge { background-color: var(--accent-color); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;}
+.badge { background-color: var(--accent-color); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: white;}
 
-/* --- 10. TABLES & STATUS BADGES --- */
-table { width: 100%; border-collapse: separate; border-spacing: 0; overflow: hidden; }
-th, td { padding: 18px 15px; border-bottom: 1px solid var(--border-color); }
+/* --- 12. TABLES & STATUS BADGES --- */
+table { width: 100%; border-collapse: collapse; overflow: hidden; }
+th, td { padding: 18px 15px; border-bottom: 1px solid var(--border-color); text-align: left;}
 th { background-color: var(--primary-dark); color: white; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px; }
-tr:last-child td { border-bottom: none; } /* Hapus garis di baris terakhir */
-tbody tr:hover { background-color: #f9fafb; } /* Highlight baris saat ditunjuk */
+tr:last-child td { border-bottom: none; } 
+tbody tr { transition: background-color 0.2s ease; }
+tbody tr:hover { background-color: var(--bg-light); } 
 
-.status { padding: 6px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; }
-.status.menunggu { background-color: var(--warning-color); color: white; }
-.status.lulus { background-color: var(--success-color); color: white; }
-.status.gagal { background-color: var(--danger-color); color: white; }
+.status { padding: 8px 16px; border-radius: 25px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;}
+.status.menunggu { background-color: rgba(245, 158, 11, 0.15); color: var(--warning-color); border: 1px solid var(--warning-color);}
+.status.lulus { background-color: rgba(16, 185, 129, 0.15); color: var(--success-color); border: 1px solid var(--success-color);}
+.status.gagal { background-color: rgba(239, 68, 68, 0.15); color: var(--danger-color); border: 1px solid var(--danger-color);}
 
 /* Area Khusus */
-#paymentArea { display: none; text-align: center; background-color: #ecfdf5; border: 2px dashed var(--success-color); padding: 30px; }
-.dana-box { font-size: 1.3rem; color: var(--text-dark); background: white; padding: 15px; border-radius: var(--radius-md); display: inline-block; margin: 15px 0; box-shadow: var(--shadow-sm); }
-.cert-box { background: linear-gradient(135deg, var(--warning-color), var(--accent-color)); color: white; border: none; }
-
+#paymentArea { display: none; text-align: center; background-color: rgba(16, 185, 129, 0.1); border: 2px dashed var(--success-color); padding: 30px; border-radius: var(--radius-lg); margin-top: 30px;}
+.dana-box { font-size: 1.4rem; color: var(--primary-color); background: var(--bg-white); padding: 20px; border-radius: var(--radius-md); display: inline-block; margin: 20px 0; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); font-family: 'Poppins', sans-serif;}
+.cert-box { background: linear-gradient(135deg, var(--warning-color), var(--accent-color)); color: white; border: none; text-align: center;}
+.cert-box h2 { color: white; }
 
 /* =========================================================
-   MEDIA QUERIES (RESPONSIVE DESIGN)
+   MEDIA QUERIES (RESPONSIVE DESIGN KHUSUS MOBILE)
    ========================================================= */
 
-/* Tablet & Mobile (Layar di bawah 768px) */
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column; /* Tumpuk navbar secara vertikal */
-        padding: 1rem;
+        flex-direction: column; 
+        padding: 1.2rem;
         gap: 15px;
     }
     .navbar div:last-child {
         width: 100%;
         justify-content: center;
-        flex-wrap: wrap; /* Agar tombol tidak keluar layar */
+        flex-wrap: wrap; 
+        gap: 10px;
     }
-    .navbar a, .navbar a[style*="background"] { margin: 5px; }
+    .navbar a, .navbar a[style*="background"] { margin: 0; width: 100%; text-align: center; }
 
-    .hero h1 { font-size: 2rem; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 1.1rem; }
     .hero { padding: 60px 20px; }
     
     .container { padding: 20px 15px; }
+    .login-container, .form-container, .welcome-card { padding: 25px 20px; }
     
-    /* Tabel bisa di-scroll menyamping di HP */
-    .container > table { display: block; overflow-x: auto; white-space: nowrap; }
+    /* Tabel scroll menyamping di HP */
+    table { display: block; overflow-x: auto; white-space: nowrap; }
     
-    .course-grid { grid-template-columns: 1fr; /* 1 kolom penuh di HP */ }
+    .course-grid { grid-template-columns: 1fr; gap: 20px;}
 }
 
-/* Mobile Kecil (Layar di bawah 480px) */
 @media (max-width: 480px) {
-    .logo { height: 32px; }
-    .navbar h2 { font-size: 1.2rem; }
-    .login-container { margin-top: -30px; padding: 20px; }
+    .logo { height: 35px; }
+    .navbar h2 { font-size: 1.3rem; }
+    .login-container { margin-top: -30px; }
+    .btn, button[type="submit"], .btn-action, .btn-masuk, .btn-wa { padding: 15px; font-size: 1.1rem;} /* Tombol lebih besar lagi di HP kecil */
 }
