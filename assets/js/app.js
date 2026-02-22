@@ -183,13 +183,17 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         
+        // --- UPDATE LEVEL MODUL ---
+        // Menambahkan CRS-007 dan CRS-008 agar 8 modul bisa terbaca (Saya set ke Advance, silakan ubah jika perlu)
         const courseLevelMap = {
             "CRS-001": "Basic",
             "CRS-002": "Basic",
             "CRS-003": "Intermediate",
             "CRS-004": "Intermediate",
             "CRS-005": "Advance",
-            "CRS-006": "Advance"
+            "CRS-006": "Advance",
+            "CRS-007": "Advance", // Ditambahkan untuk Modul 7
+            "CRS-008": "Advance"  // Ditambahkan untuk Modul 8
         };
         
         // --- VALIDASI (Case Insensitive & Handle Undefined) ---
@@ -210,10 +214,18 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("courseTitle").innerText = urlParams.get('title') || "Materi Kelas";
         
         const btnMateri = document.getElementById("courseLink");
+        
+        // --- UPDATE LINK MODUL ---
+        // 8 Modul terbaru dimasukkan di sini
         const mapLinks = {
-            "CRS-001": "modul1.html", "CRS-002": "modul2.html",
-            "CRS-003": "modul3.html", "CRS-004": "modul4.html",
-            "CRS-005": "modul5.html", "CRS-006": "modul6.html"
+            "CRS-001": "modul1-video-ai.html",
+            "CRS-002": "modul2-ideasi.html",
+            "CRS-003": "modul3-voice.html",
+            "CRS-004": "modul4-visual.html",
+            "CRS-005": "modul5-karakter.html",
+            "CRS-006": "modul6-avatar.html",
+            "CRS-007": "modul7-video.html",
+            "CRS-008": "modul8-editing.html"
         };
         // Fallback jika tidak ada di mapLinks maka kembali ke dashboard atau beri link placeholder
         btnMateri.href = mapLinks[modId] || "#"; 
