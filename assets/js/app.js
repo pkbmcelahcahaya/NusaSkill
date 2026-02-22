@@ -1,5 +1,5 @@
 /* =========================================================
-   MASTER JAVASCRIPT - NUSASKILL LMS (FIXED VERSION)
+   MASTER JAVASCRIPT - NUSASKILL LMS (REVISED & OPTIMIZED)
    ========================================================= */
 
 // URL DEPLOY APPS SCRIPT ANDA
@@ -15,31 +15,39 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const user = JSON.parse(localStorage.getItem("userLMS"));
 
+    // Konfigurasi standar untuk Fetch API ke Google Apps Script
+    const fetchOptions = (data) => ({
+        method: "POST",
+        // Gunakan text/plain untuk menghindari CORS preflight (OPTIONS) error di Apps Script
+        headers: { "Content-Type": "text/plain;charset=utf-8" }, 
+        body: JSON.stringify(data)
+    });
+
     // --------------------------------------------------
     // 1. LOGIKA HALAMAN LOGIN (index.html)
     // --------------------------------------------------
     const loginForm = document.getElementById("loginForm");
     if (loginForm) {
-        if(user) {
+        if (user) {
             window.location.href = user.role === "Instruktur" ? "instructor.html" : "dashboard.html";
+            return; // Hentikan eksekusi script selanjutnya
         }
 
         loginForm.addEventListener("submit", async function(e) {
             e.preventDefault();
             const btn = document.getElementById("loginBtn");
             const msg = document.getElementById("loginMsg");
+            
             btn.innerText = "Memeriksa...";
+            btn.disabled = true; // Cegah double-click
             msg.innerText = "";
 
             try {
-                let response = await fetch(SCRIPT_URL, { 
-                    method: "POST", 
-                    body: JSON.stringify({
-                        action: "login",
-                        email: document.getElementById("email").value,
-                        password: document.getElementById("password").value
-                    }) 
-                });
+                let response = await fetch(SCRIPT_URL, fetchOptions({
+                    action: "login",
+                    email: document.getElementById("email").value,
+                    password: document.getElementById("password").value
+                }));
                 let result = await response.json();
 
                 if (result.status === "success") {
@@ -49,13 +57,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     window.location.href = result.userData.role === "Instruktur" ? "instructor.html" : "dashboard.html";
                 } else {
                     msg.style.color = "red";
-                    msg.innerText = result.message;
+                    msg.innerText = result.message || "Email atau password salah.";
                     btn.innerText = "Login";
+                    btn.disabled = false;
                 }
             } catch (error) {
+                console.error("Login Error:", error);
                 msg.style.color = "red";
-                msg.innerText = "Terjadi kesalahan sistem.";
+                msg.innerText = "Terjadi kesalahan sistem atau koneksi.";
                 btn.innerText = "Login";
+                btn.disabled = false;
             }
         });
     }
@@ -71,38 +82,42 @@ document.addEventListener("DOMContentLoaded", () => {
             const msg = document.getElementById("regMsg");
             const nama = document.getElementById("regNama").value;
             const level = document.getElementById("regLevel").value;
+            
             btn.innerText = "Memproses Data...";
+            btn.disabled = true;
 
             try {
-                let response = await fetch(SCRIPT_URL, { 
-                    method: "POST", 
-                    body: JSON.stringify({
-                        action: "register",
-                        nama: nama,
-                        email: document.getElementById("regEmail").value,
-                        password: document.getElementById("regPass").value,
-                        noHp: document.getElementById("regHp").value,
-                        level: level,
-                        durasi: document.getElementById("regDurasi").value
-                    }) 
-                });
+                let response = await fetch(SCRIPT_URL, fetchOptions({
+                    action: "register",
+                    nama: nama,
+                    email: document.getElementById("regEmail").value,
+                    password: document.getElementById("regPass").value,
+                    noHp: document.getElementById("regHp").value,
+                    level: level,
+                    durasi: document.getElementById("regDurasi").value
+                }));
                 let result = await response.json();
 
                 if (result.status === "success") {
                     regForm.style.display = "none";
                     document.getElementById("paymentArea").style.display = "block";
+                    
                     let tgl = new Date().toLocaleDateString('id-ID');
-                    let waText = `Halo Admin, saya ingin konfirmasi pendaftaran NusaSkill.%0A%0ANama: ${nama}%0AProgram: ${level}%0ATanggal: ${tgl}%0A%0A(Lampirkan bukti transfer di sini)`;
-                    document.getElementById("waLink").href = `https://wa.me/6281223546686?text=${waText}`;
+                    // Menggunakan encodeURIComponent agar aman dari karakter khusus & spasi
+                    let waText = `Halo Admin, saya ingin konfirmasi pendaftaran NusaSkill.\n\nNama: ${nama}\nProgram: ${level}\nTanggal: ${tgl}\n\n(Lampirkan bukti transfer di sini)`;
+                    document.getElementById("waLink").href = `https://wa.me/6281223546686?text=${encodeURIComponent(waText)}`;
                 } else {
                     msg.style.color = "red";
-                    msg.innerText = result.message;
+                    msg.innerText = result.message || "Gagal mendaftar.";
                     btn.innerText = "Daftar & Lanjut Pembayaran";
+                    btn.disabled = false;
                 }
             } catch (error) {
+                console.error("Register Error:", error);
                 msg.style.color = "red";
-                msg.innerText = "Koneksi gagal. Coba lagi.";
+                msg.innerText = "Koneksi gagal. Silakan coba lagi.";
                 btn.innerText = "Daftar & Lanjut Pembayaran";
+                btn.disabled = false;
             }
         });
     }
@@ -118,11 +133,12 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("userLevelDisplay").innerText = user.level;
         document.getElementById("userEmailDisplay").innerText = user.email;
 
-        fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "getCourses" }) })
+        fetch(SCRIPT_URL, fetchOptions({ action: "getCourses" }))
             .then(res => res.json())
             .then(result => {
                 document.getElementById('loadingMsg').style.display = 'none';
                 if (result.status === "success" && result.data.length > 0) {
+                    
                     // Filter kursus agar yang muncul di dashboard HANYA yang sesuai level user
                     const filteredData = result.data.filter(c => c.level.toLowerCase() === user.level.toLowerCase() || user.role === "Instruktur");
                     
@@ -145,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     courseContainer.innerHTML = "<p>Modul belum tersedia di database.</p>";
                 }
             }).catch(e => {
+                console.error("Fetch Courses Error:", e);
                 document.getElementById('loadingMsg').innerText = "Gagal memuat modul dari server.";
             });
     }
@@ -159,6 +176,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const urlParams = new URLSearchParams(window.location.search);
         const modId = urlParams.get('id'); 
         
+        // Pengecekan jika ID tidak ada di URL
+        if (!modId) {
+            alert("🔒 Modul tidak ditemukan atau URL tidak valid!");
+            window.location.href = "dashboard.html";
+            return;
+        }
+        
         const courseLevelMap = {
             "CRS-001": "Basic",
             "CRS-002": "Basic",
@@ -168,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "CRS-006": "Advance"
         };
         
-        // --- PERBAIKAN VALIDASI (Case Insensitive) ---
+        // --- VALIDASI (Case Insensitive & Handle Undefined) ---
         const userLevelClean = (user.level || "").trim().toLowerCase();
         const requiredLevel = (courseLevelMap[modId] || "").trim().toLowerCase();
         
@@ -177,7 +201,8 @@ document.addEventListener("DOMContentLoaded", () => {
         else if (userLevelClean === requiredLevel) isAllowed = true;
 
         if (!isAllowed) {
-            alert(`🔒 Akses Ditolak!\nLevel Anda: ${user.level}\nMateri ini khusus untuk level: ${courseLevelMap[modId]}`);
+            const requiredDisplay = courseLevelMap[modId] || "Unknown";
+            alert(`🔒 Akses Ditolak!\nLevel Anda: ${user.level}\nMateri ini khusus untuk level: ${requiredDisplay}`);
             window.location.href = "dashboard.html";
             return;
         }
@@ -190,7 +215,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "CRS-003": "modul3.html", "CRS-004": "modul4.html",
             "CRS-005": "modul5.html", "CRS-006": "modul6.html"
         };
-        btnMateri.href = mapLinks[modId] || "#";
+        // Fallback jika tidak ada di mapLinks maka kembali ke dashboard atau beri link placeholder
+        btnMateri.href = mapLinks[modId] || "#"; 
 
         taskForm.addEventListener("submit", async function(e) {
             e.preventDefault();
@@ -200,32 +226,37 @@ document.addEventListener("DOMContentLoaded", () => {
             const linkTugas = document.getElementById("linkTugas").value;
 
             btn.innerText = "Mengirim...";
+            btn.disabled = true;
+
             try {
-                await fetch(SCRIPT_URL, { 
-                    method: "POST", 
-                    body: JSON.stringify({
-                        action: "submitTask",
-                        userId: user.id, 
-                        courseId: modId,
-                        kategoriTugas: pilihanMinggu, 
-                        linkTugas: linkTugas
-                    }) 
-                });
+                await fetch(SCRIPT_URL, fetchOptions({
+                    action: "submitTask",
+                    userId: user.id, 
+                    courseId: modId,
+                    kategoriTugas: pilihanMinggu, 
+                    linkTugas: linkTugas
+                }));
+                
                 msg.style.color = "green";
                 msg.innerText = "✅ Tugas berhasil dikirim!";
-                btn.innerText = "Tugas Terkirim";
+                btn.innerText = "Kirim Tugas Lagi";
+                btn.disabled = false;
                 taskForm.reset();
             } catch (error) {
-                msg.innerText = "❌ Gagal mengirim.";
+                console.error("Submit Task Error:", error);
+                msg.style.color = "red";
+                msg.innerText = "❌ Gagal mengirim tugas. Coba lagi.";
+                btn.innerText = "Kirim Tugas";
+                btn.disabled = false;
             }
         });
     }
 
     // --------------------------------------------------
-    // 5. PROGRESS & 6. INSTRUCTOR (Tetap sama, hanya pastikan user ada)
+    // 5. PROGRESS & 6. INSTRUCTOR
     // --------------------------------------------------
     if (document.getElementById("certBox") || document.getElementById("gradingBody")) {
-        if (!user) window.location.href = "index.html";
+        if (!user) return window.location.href = "index.html"; // Ditambahkan "return"
     }
 
     // --------------------------------------------------
