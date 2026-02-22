@@ -8,7 +8,7 @@
         alert("🔒 Akses Ditolak! Ini adalah materi paket Basic.");
         window.location.href = "dashboard.html";
     }
-</script>
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modul 2: MS Word Dasar - NusaSkill</title>
@@ -20,12 +20,16 @@
         .module-content { background: #ffffff; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 40px; line-height: 1.8; color: #333; }
         .week-section { margin-top: 40px; padding-top: 20px; border-top: 2px dashed #ecf0f1; }
         .week-section h2 { color: #2c3e50; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .week-section h3 { color: #2980b9; margin-top: 25px; }
+        .week-section h3 { color: #2980b9; margin-top: 25px; border-bottom: 1px solid #ecf0f1; padding-bottom: 5px; }
         .img-fluid { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
         .step-box { background: #f8f9fa; border-left: 4px solid #2980b9; padding: 15px 20px; margin: 15px 0; border-radius: 0 5px 5px 0; }
         .task-list { background: #e8f4f8; padding: 20px; border-radius: 8px; border: 1px solid #bce0ee; margin-top: 30px; }
         .task-list h4 { color: #0c5460; margin-top: 0; font-size: 18px; }
         .task-list ul { padding-left: 20px; margin-bottom: 0; color: #0c5460; }
+        .eval-box { background: #fdf5e6; padding: 25px; border-radius: 8px; border: 1px solid #f5deb3; margin-top: 40px; }
+        .eval-box h3 { color: #8b4513; margin-top: 0; border: none; }
+        .eval-question { margin-bottom: 15px; font-weight: bold; }
+        .eval-options { margin-left: 20px; list-style-type: lower-alpha; margin-bottom: 20px;}
     </style>
 </head>
 <body>
@@ -41,144 +45,193 @@
 <div class="container">
     <div class="module-header">
         <h1>Modul 2: Microsoft Word Dasar</h1>
-        <p>Tahap Dasar (Pemula) | Fokus: Tata Letak & Pembuatan Surat Resmi</p>
+        <p>Tahap Dasar (Pemula) | Fokus: Pengolahan Kata, Tata Letak & Pembuatan Surat Resmi</p>
         <p style="font-size: 14px; opacity: 0.8;">Instruktur: Admin Budi</p>
     </div>
 
     <div class="module-content">
-        <p style="font-size: 18px; text-align: center; margin-bottom: 40px;">Microsoft Word adalah perangkat lunak pengolah kata paling populer di dunia. Di modul ini, Anda akan belajar dari cara mengetik hingga membuat surat resmi yang siap dicetak untuk kebutuhan kantor.</p>
+        <p style="font-size: 18px; text-align: center; margin-bottom: 40px;">Microsoft Word adalah perangkat lunak pengolah kata paling standar dan diakui secara global di dunia kerja. Pada modul ini, Anda akan dipandu secara bertahap mulai dari pengenalan antarmuka, format dokumen, hingga menyusun dokumen dan surat resmi berstandar perkantoran.</p>
 
         <div class="week-section">
-            <h2>📅 Minggu 1: Pengenalan Interface & Format Teks</h2>
-            <p>Sebelum mulai membuat dokumen, kita harus mengenali alat-alat tempur yang ada di dalam Microsoft Word.</p>
+            <h2>📅 Minggu 1: Eksplorasi Interface & Format Tipografi</h2>
+            <p>Memahami lokasi berbagai perintah dalam Microsoft Word akan drastis mempercepat proses pengetikan Anda.</p>
             <img src="https://images.unsplash.com/photo-1596496050827-8299e0220de1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mengetik di Keyboard" class="img-fluid">
             
-            <h3>1. Mengenal Ribbon (Pita Menu)</h3>
+            <h3>1. Anatomi Antarmuka MS Word (Ribbon System)</h3>
             <ul>
-                <li><strong>Home:</strong> Tempat pengaturan dasar (Font, Ukuran, Paragraf).</li>
-                <li><strong>Insert:</strong> Untuk memasukkan Gambar, Tabel, dan Halaman Baru.</li>
-                <li><strong>Layout:</strong> Untuk mengatur ukuran kertas dan batas tepi (Margin).</li>
+                <li><strong>Quick Access Toolbar:</strong> Berada di pojok kiri atas. Menyediakan tombol super cepat seperti Save (Disket), Undo (Panah kiri), dan Redo (Panah kanan).</li>
+                <li><strong>Home Tab:</strong> Tab paling penting! Pusat pengaturan teks (Font), paragraf, dan gaya huruf (Styles).</li>
+                <li><strong>Insert Tab:</strong> Digunakan untuk menyisipkan elemen selain teks murni, seperti Gambar (Pictures), Tabel (Table), Bentuk (Shapes), dan Halaman Baru (Page Break).</li>
+                <li><strong>Status Bar:</strong> Berada di pojok kiri bawah layar, menampilkan informasi penting seperti jumlah halaman (Page x of y) dan jumlah kata (Words) yang sudah diketik.</li>
             </ul>
 
-            <h3>2. Format Teks (Font Group)</h3>
+            <h3>2. Manipulasi Font dan Teks</h3>
             <div class="step-box">
-                Blok teks yang ingin diubah (Klik kiri tahan dan geser), lalu gunakan ikon di menu <strong>Home</strong>:<br>
-                • <strong>B (Bold):</strong> Menebalkan huruf (Ctrl+B).<br>
-                • <strong>I (Italic):</strong> Memiringkan huruf (Ctrl+I).<br>
-                • <strong>U (Underline):</strong> Memberi garis bawah (Ctrl+U).<br>
-                • <strong>Font Size:</strong> Angka (misal 11, 12) untuk mengatur besar kecil teks.
+                Pilih (Blok) teks terlebih dahulu dengan menahan klik kiri mouse dan menggesernya. Kemudian modifikasi melalui grup "Font" di tab Home:<br>
+                • <strong>B (Bold):</strong> Menebalkan teks untuk penekanan (Shortcut: Ctrl+B).<br>
+                • <strong>I (Italic):</strong> Memiringkan teks, biasanya untuk kata asing atau kutipan (Shortcut: Ctrl+I).<br>
+                • <strong>U (Underline):</strong> Memberi garis bawah, umumnya pada sub-judul (Shortcut: Ctrl+U).<br>
+                • <strong>Font Face:</strong> Mengubah jenis huruf (Contoh: Times New Roman, Arial, Calibri).<br>
+                • <strong>Font Size:</strong> Mengubah ukuran poin huruf (Standar dokumen resmi adalah ukuran 11 atau 12).
             </div>
 
             <div class="task-list">
                 <h4>🎯 Tugas Praktik Minggu 1:</h4>
                 <ul>
-                    <li>Buka dokumen baru di MS Word.</li>
-                    <li>Ketik sebuah paragraf pendek (minimal 5 kalimat) menceritakan alasan Anda mengikuti kursus ini.</li>
-                    <li>Gunakan format <strong>Bold</strong> pada nama Anda, <em>Italic</em> pada nama lembaga (NusaSkill), dan garis bawah pada cita-cita Anda.</li>
-                    <li>Simpan dengan nama: <strong>Word_M1_NamaAnda.docx</strong></li>
+                    <li>Buka dokumen kosong (Blank Document) di MS Word.</li>
+                    <li>Ketikkan profil singkat Anda (minimal 2 paragraf) yang menceritakan latar belakang dan alasan Anda mengikuti kursus ini.</li>
+                    <li>Ubah judul profil Anda menggunakan Font <strong>Arial</strong>, ukuran <strong>14</strong>, dan <strong>Tebal (Bold)</strong>.</li>
+                    <li>Gunakan cetak miring (<em>Italic</em>) pada setiap kata bahasa asing atau bahasa daerah yang Anda gunakan di dalam cerita tersebut.</li>
+                    <li>Simpan dokumen dengan nama: <strong>Word_M1_NamaAnda.docx</strong></li>
                 </ul>
             </div>
         </div>
 
         <div class="week-section">
-            <h2>📅 Minggu 2: Pengaturan Paragraf & Penomoran</h2>
-            <p>Dokumen yang rapi adalah dokumen yang mudah dibaca. Minggu ini kita belajar meratakan teks dan membuat daftar otomatis.</p>
+            <h2>📅 Minggu 2: Manajemen Paragraf & List/Daftar</h2>
+            <p>Kerapian dokumen sangat ditentukan oleh bagaimana Anda mengatur spasi baris dan perataan paragraf. Dokumen yang rapi akan memberikan kesan profesional dan kredibel.</p>
             
-            <h3>1. Alignment (Perataan Teks)</h3>
-            <p>Di menu Home (Grup Paragraph), terdapat 4 jenis perataan:</p>
+            <h3>1. Alignment (Perataan Paragraf)</h3>
+            <p>Di menu Home (Grup Paragraph), biasakan diri Anda dengan 4 jenis perataan standar:</p>
             <ul>
-                <li><strong>Align Left:</strong> Rata kiri (Standar).</li>
-                <li><strong>Center:</strong> Rata tengah (Cocok untuk Judul Dokumen/Kop Surat).</li>
-                <li><strong>Align Right:</strong> Rata kanan (Biasa digunakan untuk tanggal surat).</li>
-                <li><strong>Justify:</strong> Rata kiri dan kanan (Sangat penting agar dokumen terlihat profesional dan kotak rapi).</li>
+                <li><strong>Align Left (Ctrl+L):</strong> Rata kiri. Teks bergerigi di sebelah kanan. Standar penulisan informal.</li>
+                <li><strong>Center (Ctrl+E):</strong> Rata tengah. Digunakan khusus untuk Judul Dokumen, Kop Surat, atau Teks Kutipan Puisi.</li>
+                <li><strong>Align Right (Ctrl+R):</strong> Rata kanan. Sering digunakan untuk menuliskan Tanggal di pojok kanan atas pada surat resmi.</li>
+                <li><strong>Justify (Ctrl+J):</strong> Rata kiri dan kanan. Teks ditarik sehingga lurus rapi membentuk kotak. <strong>Sangat diwajibkan</strong> untuk penulisan buku, skripsi, dan surat resmi instansi.</li>
             </ul>
 
-            <h3>2. Bullets and Numbering (Daftar & Penomoran)</h3>
+            <h3>2. Line Spacing (Spasi Baris)</h3>
+            <p>Jarak antar baris kalimat sangat mempengaruhi kenyamanan membaca. Blok paragraf Anda, klik ikon <em>Line and Paragraph Spacing</em> (ikon garis-garis dengan panah atas-bawah). Standar perkantoran umumnya menggunakan spasi <strong>1.15</strong> atau <strong>1.5</strong>.</p>
+
+            <h3>3. Bullets and Numbering (Daftar & Penomoran)</h3>
             <div class="step-box">
-                Untuk membuat daftar belanja atau daftar nama:<br>
-                1. Klik ikon <strong>Bullets</strong> (titik-titik hitam) untuk daftar tanpa urutan angka.<br>
-                2. Klik ikon <strong>Numbering</strong> (1, 2, 3) untuk daftar berurutan.<br>
-                3. Setiap kali Anda menekan tombol <strong>Enter</strong>, nomor/titik baru akan otomatis muncul.
+                Fitur ini mengatur daftar rincian agar tidak berantakan:<br>
+                1. <strong>Bullets</strong> (Ikon titik-titik hitam): Untuk daftar yang tidak memiliki urutan prioritas (contoh: Daftar peralatan tulis).<br>
+                2. <strong>Numbering</strong> (Ikon angka 1,2,3 atau A,B,C): Untuk daftar yang memerlukan urutan proses atau peringkat (contoh: Langkah-langkah memasak, struktur organisasi).<br>
+                <em>Tips Pro:</em> Jika Anda menekan <strong>Enter</strong> di akhir daftar, MS word akan otomatis membuat nomor berikutnya. Tekan Enter dua kali berturut-turut untuk keluar dari mode penomoran.
             </div>
 
             <div class="task-list">
                 <h4>🎯 Tugas Praktik Minggu 2:</h4>
                 <ul>
-                    <li>Buat dokumen baru berjudul "Daftar Perlengkapan Kantor". Buat judul ini menjadi <strong>Rata Tengah (Center)</strong>.</li>
-                    <li>Buat 5 daftar barang menggunakan fitur <strong>Numbering</strong>.</li>
-                    <li>Di bawahnya, buat deskripsi singkat 1 paragraf menggunakan perataan <strong>Justify</strong>.</li>
+                    <li>Buat dokumen baru berjudul "Standar Operasional Prosedur (SOP)". Atur judul menjadi <strong>Center (Rata Tengah)</strong>.</li>
+                    <li>Buatlah 5 langkah prosedur (karangan bebas) menggunakan fitur <strong>Numbering (Angka)</strong>.</li>
+                    <li>Di bawah daftar tersebut, buat penjelasan penutup minimal 1 paragraf, dan atur perataannya menjadi <strong>Justify (Rata Kanan-Kiri)</strong> dengan <strong>Line Spacing 1.5</strong>.</li>
                     <li>Simpan dengan nama: <strong>Word_M2_NamaAnda.docx</strong></li>
                 </ul>
             </div>
         </div>
 
         <div class="week-section">
-            <h2>📅 Minggu 3: Page Layout & Kop Surat (Header)</h2>
-            <p>Sebelum mencetak, kita harus memastikan ukuran kertas di komputer sama dengan ukuran kertas asli di printer.</p>
+            <h2>📅 Minggu 3: Page Layout (Tata Letak) & Header/Footer</h2>
+            <p>Masalah paling umum bagi pemula adalah: tampilan di layar berbeda dengan hasil saat dicetak di printer. Ini terjadi karena Anda tidak menyetel Page Layout terlebih dahulu.</p>
             <img src="https://images.unsplash.com/photo-1618424181497-157f25b6ce50?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Dokumen Kertas" class="img-fluid">
 
-            <h3>1. Mengatur Margin dan Ukuran Kertas</h3>
+            <h3>1. Mengatur Page Setup (Ukuran dan Margin)</h3>
+            <p>Sebelum mengetik satu kata pun, biasakan membuka tab <strong>Layout</strong> untuk melakukan hal berikut:</p>
             <div class="step-box">
-                1. Buka tab <strong>Layout</strong>.<br>
-                2. Klik <strong>Size</strong>, pilih <strong>A4</strong> (ukuran paling umum untuk surat).<br>
-                3. Klik <strong>Margins</strong>, pilih <strong>Custom Margins</strong>. Atur angka standar skripsi/laporan: Top (4cm), Left (4cm), Bottom (3cm), Right (3cm).
+                1. <strong>Size (Ukuran Kertas):</strong> Pilih ukuran yang sesuai dengan fisik kertas Anda (Umumnya <strong>A4</strong> atau F4/Legal). Jika salah setel, kalimat bagian bawah dokumen bisa terpotong saat diprint.<br>
+                2. <strong>Orientation:</strong> Pilih <em>Portrait</em> (berdiri/vertikal) atau <em>Landscape</em> (mendatar/horizontal, cocok untuk tabel lebar).<br>
+                3. <strong>Margins (Batas Tepi):</strong> Jarak antara tepi kertas fisik dengan awal tulisan. Untuk membuat margin khusus (seperti batas makalah skripsi: Kiri 4cm, Atas 4cm, Kanan 3cm, Bawah 3cm), klik <em>Margins</em> > <em>Custom Margins</em>.
             </div>
 
-            <h3>2. Membuat Kop Surat dengan Header</h3>
-            <p>Kop surat adalah identitas perusahaan di bagian paling atas dokumen.</p>
-            <div class="step-box">
-                1. <strong>Klik dua kali (Double click)</strong> pada bagian paling atas kertas (area putih kosong di atas margin).<br>
-                2. Area <em>Header</em> akan terbuka.<br>
-                3. Ketikkan Nama Perusahaan, Alamat, dan No. Telepon dengan posisi rata tengah (Center).<br>
-                4. Klik dua kali di area tengah dokumen untuk menutup Header.
-            </div>
+            <h3>2. Header (Kop Surat) dan Footer (Catatan Kaki)</h3>
+            <p>Kop surat adalah identitas pengirim surat yang ditempatkan di bagian paling atas dokumen, di luar area pengetikan utama (Margin Atas).</p>
+            <ul>
+                <li><strong>Cara Mengaktifkan:</strong> Klik dua kali (Double-click) secara cepat pada area putih kosong di bagian paling atas kertas. Garis putus-putus batas Header akan muncul.</li>
+                <li><strong>Cara Menggunakan:</strong> Ketikkan Nama Perusahaan (Tebal & huruf besar), Alamat lengkap, dan Kontak. Gunakan perataan <em>Center</em>.</li>
+                <li><strong>Cara Keluar:</strong> Klik dua kali di area tengah dokumen (area teks utama).</li>
+            </ul>
 
             <div class="task-list">
                 <h4>🎯 Tugas Praktik Minggu 3:</h4>
                 <ul>
-                    <li>Atur ukuran kertas menjadi <strong>A4</strong> dengan margin Normal.</li>
-                    <li>Buatlah Header/Kop Surat untuk "PT. NusaSkill Teknologi", lengkap dengan alamat palsu dan nomor telepon.</li>
+                    <li>Buka dokumen baru, atur ukuran kertas menjadi <strong>A4</strong>.</li>
+                    <li>Atur <strong>Custom Margins</strong>: Top (3cm), Left (3cm), Bottom (2cm), Right (2cm).</li>
+                    <li>Masuk ke area Header, buatlah Kop Surat rapi untuk perusahaan fiktif bernama <strong>"PT. NusaSkill Teknologi Mandiri"</strong> lengkap dengan baris alamat dan nomor telepon.</li>
                     <li>Simpan dengan nama: <strong>Word_M3_NamaAnda.docx</strong></li>
                 </ul>
             </div>
         </div>
 
         <div class="week-section">
-            <h2>📅 Minggu 4: Final Project - Membuat Surat Resmi</h2>
-            <p>Saatnya menggabungkan semua ilmu dari minggu 1 hingga 3 untuk membuat satu surat resmi yang utuh.</p>
+            <h2>📅 Minggu 4: Final Project - Menyusun Surat Resmi & Ekspor PDF</h2>
+            <p>Di minggu terakhir ini, kita merangkum seluruh keterampilan dari fungsi Font, Paragraf, hingga Layout untuk menghasilkan sebuah produk yang valid: <strong>Surat Resmi.</strong></p>
 
-            <h3>Komponen Surat Resmi yang Wajib Ada:</h3>
+            <h3>Komponen Dasar Surat Resmi yang Wajib Ada secara Berurutan:</h3>
             <ol>
-                <li>Kop Surat (Header, Rata Tengah).</li>
-                <li>Tanggal Surat (Rata Kanan).</li>
-                <li>Nomor, Lampiran, dan Perihal Surat (Rata Kiri).</li>
-                <li>Alamat yang dituju.</li>
-                <li>Isi Surat (Gunakan perataan Justify).</li>
-                <li>Tanda Tangan dan Nama Terang (Bisa disiasati dengan menggunakan tombol Tab (di keyboard) agar posisinya menjorok ke kanan).</li>
+                <li><strong>Kop Surat (Header):</strong> Berada di rata tengah atas.</li>
+                <li><strong>Tanggal Surat:</strong> Ditempatkan di Rata Kanan (Align Right), di bawah garis Kop Surat.</li>
+                <li><strong>Nomor, Lampiran, dan Perihal:</strong> Ditempatkan di Rata Kiri (Align Left).</li>
+                <li><strong>Alamat Tujuan:</strong> (Contoh: Yth. Bapak/Ibu Manajer HRD...) Rata Kiri.</li>
+                <li><strong>Salam Pembuka & Paragraf Isi:</strong> Menjelaskan maksud surat. Gunakan <em>Justify</em> (Rata Kanan-Kiri) dan berikan spasi antar paragraf.</li>
+                <li><strong>Salam Penutup, Tanda Tangan, dan Nama Terang:</strong> Diletakkan di pojok kanan bawah dokumen. <em>(Trik: Gunakan tombol "Tab" di keyboard beberapa kali untuk mendorong kursor ke sebelah kanan tanpa merusak spasi)</em>.</li>
             </ol>
+
+            <h3>Menyimpan sebagai PDF (Portable Document Format)</h3>
+            <p>Agar dokumen Anda layoutnya tidak berantakan saat dikirim ke komputer orang lain atau dicetak, format DOCX wajib diubah menjadi PDF. Caranya: Klik <strong>File > Save As</strong>, pilih lokasi folder, lalu pada kolom <em>Save as type</em>, ubah pilihan menjadi <strong>PDF (*.pdf)</strong>, kemudian klik Save.</p>
 
             <div class="task-list">
                 <h4>🎯 Tugas Praktik Minggu 4 (Final Modul 2):</h4>
                 <ul>
-                    <li>Buatlah 1 halaman penuh <strong>Surat Undangan Rapat</strong> perusahaan menggunakan kop surat yang Anda buat di Minggu 3.</li>
-                    <li>Gunakan Font <strong>Times New Roman</strong>, ukuran <strong>12</strong>.</li>
-                    <li>Beri jarak baris (Line Spacing) sebesar <strong>1.5</strong> agar rapi.</li>
-                    <li>Pastikan ada tempat tanda tangan direktur di kanan bawah.</li>
-                    <li>Simpan sebagai PDF (File > Save As > pilih format PDF). Beri nama: <strong>SuratResmi_Final_NamaAnda.pdf</strong>.</li>
+                    <li>Buatlah 1 halaman penuh <strong>Surat Permohonan Izin / Undangan Rapat</strong> (Pilih salah satu) yang merepresentasikan perusahaan dari kop surat yang Anda buat di Minggu 3.</li>
+                    <li>Pastikan komposisi paragraf rapi (Justify, Line Spacing 1.15 atau 1.5).</li>
+                    <li>Pastikan ada tempat tanda tangan direktur di bagian kanan bawah surat.</li>
+                    <li>Simpan atau Ekspor file ini menjadi format <strong>PDF</strong>. Beri nama file: <strong>SuratResmi_Final_NamaAnda.pdf</strong>.</li>
                 </ul>
             </div>
+        </div>
+
+        <div class="eval-box">
+            <h2>📝 Evaluasi Akhir Modul 2</h2>
+            <p>Jawablah pertanyaan berikut di dokumen Word Anda, dan jadikan satu bersama file tugas lainnya saat dikumpulkan.</p>
+            
+            <div class="eval-question">1. Menu atau tab di Microsoft Word yang secara khusus digunakan untuk mengubah ukuran kertas (Size) dan mengatur batas margin adalah...</div>
+            <ul class="eval-options">
+                <li>A. Home</li>
+                <li>B. Insert</li>
+                <li>C. Layout / Page Layout</li>
+                <li>D. View</li>
+            </ul>
+
+            <div class="eval-question">2. Kombinasi tombol di keyboard (shortcut) untuk membuat tulisan menjadi rata kanan dan kiri secara otomatis (Justify) adalah...</div>
+            <ul class="eval-options">
+                <li>A. Ctrl + R</li>
+                <li>B. Ctrl + J</li>
+                <li>C. Ctrl + E</li>
+                <li>D. Ctrl + L</li>
+            </ul>
+
+            <div class="eval-question">3. Jika Anda ingin menyisipkan gambar logo perusahaan ke dalam Kop Surat, tab manakah yang harus Anda buka?</div>
+            <ul class="eval-options">
+                <li>A. Design</li>
+                <li>B. Layout</li>
+                <li>C. Home</li>
+                <li>D. Insert</li>
+            </ul>
+
+            <div class="eval-question">4. Mengapa sangat direkomendasikan untuk menyimpan (Save As) surat resmi yang sudah final ke dalam format PDF sebelum dikirimkan via Email/WhatsApp?</div>
+            <ul class="eval-options">
+                <li>A. Agar ukuran file menjadi lebih besar dan terlihat berkualitas.</li>
+                <li>B. Agar penerima surat tidak bisa membuka file tersebut tanpa password.</li>
+                <li>C. Agar format susunan, font, dan margin tidak berantakan saat dibuka di HP atau perangkat lain yang versi Word-nya berbeda.</li>
+                <li>D. Agar gambar logo bisa berubah animasi.</li>
+            </ul>
+
+            <div class="eval-question">Essay Singkat:</div>
+            <p>Jelaskan secara singkat bagaimana cara membuat penomoran urut (1, 2, 3...) secara otomatis tanpa harus mengetik angkanya satu per satu!</p>
         </div>
     </div>
 
     <div class="tugas-box" style="margin: 0 auto; max-width: 800px;">
         <h3 style="text-align: center; color: #e67e22;">📥 Kumpulkan Tugas Modul 2 (MS Word)</h3>
         <p style="color: #7f8c8d; font-size: 15px; margin-bottom: 25px; text-align: center; line-height: 1.6;">
-            Jadikan semua file tugas (Minggu 1, 2, 3, dan Final PDF Minggu 4) ke dalam satu folder di Google Drive. Masukkan link folder tersebut ke kolom di bawah ini.
+            Jadikan semua file tugas (File DOCX Minggu 1, 2, 3, File jawaban evaluasi, dan File PDF Final Minggu 4) ke dalam satu folder di Google Drive. Masukkan link folder tersebut ke kolom di bawah ini. Pastikan akses folder diset ke Publik.
         </p>
         
         <form id="taskForm">
             <select id="pilihanMinggu" style="margin-bottom: 20px; width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;">
-                <option value="Tugas Modul 2 - Word">Paket Tugas Modul 2 (Minggu 1 - 4)</option>
+                <option value="Tugas Modul 2 - Word">Paket Tugas Modul 2 (Minggu 1 - 4 & Evaluasi)</option>
             </select>
             <input type="url" id="linkTugas" placeholder="Contoh: https://drive.google.com/drive/folders/xxxxx" required style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;">
             <button type="submit" class="btn-submit" id="submitBtn" style="width: 100%; font-size: 18px; padding: 15px; background: #2980b9;">Kirim Tugas Modul 2</button>
