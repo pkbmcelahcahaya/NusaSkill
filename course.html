@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruang Kelas - NusaSkill</title>
-    
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruang Kelas - NusaSkill</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <div class="navbar">
-    <div class="brand-container">
-        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/NusaSkill.png" alt="Logo NusaSkill" class="logo">
-        <h2>NusaSkill LMS</h2>
-    </div>
-    <a href="dashboard.html" style="background: #e67e22; padding: 8px 15px; border-radius: 5px; color: white;">Kembali ke Dashboard</a>
+    <div class="brand-container">
+        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/NusaSkill.png" alt="Logo NusaSkill" class="logo">
+        <h2>NusaSkill LMS</h2>
+    </div>
+    <a href="dashboard.html" style="background: #e67e22; padding: 8px 15px; border-radius: 5px; color: white;">Kembali ke Dashboard</a>
 </div>
 
 <div class="container">
-    <div class="materi-box">
-        <h2 id="courseTitle">Memuat Materi...</h2>
-        <p>Silakan pelajari modul atau tonton video materi melalui tombol di bawah ini sebelum mengerjakan tugas.</p>
-        <a href="#" id="courseLink" target="_blank" class="btn-materi">📖 Buka Materi / Video</a>
-    </div>
+    <div class="materi-box">
+        <h2 id="courseTitle">Memuat Materi...</h2>
+        <p>Silakan pelajari modul atau tonton video materi melalui tombol di bawah ini sebelum mengerjakan tugas.</p>
+        <a href="#" id="courseLink" target="_blank" class="btn-materi">📖 Buka Materi / Video</a>
+    </div>
 
-    <div class="tugas-box">
-        <h3>Form Pengumpulan Tugas</h3>
-        <p style="color: #7f8c8d; font-size: 14px; margin-bottom: 15px;">
-            Pastikan tugas Anda diunggah ke Google Drive dan akses linknya diubah menjadi "Siapa saja yang memiliki link".
-        </p>
-        
-        <form id="taskForm">
-            <input type="url" id="linkTugas" placeholder="Masukkan Link Tugas (Contoh: https://drive.google.com/...)" required>
-            <button type="submit" class="btn-submit" id="submitBtn">Kirim Tugas</button>
-            <p id="msg" style="text-align: center; font-weight: bold; margin-top: 10px;"></p>
-        </form>
-    </div>
+    <div class="tugas-box">
+        <h3>Form Pengumpulan Tugas</h3>
+        <p style="color: #7f8c8d; font-size: 14px; margin-bottom: 15px;">
+            Pastikan tugas Anda diunggah ke Google Drive dan akses linknya diubah menjadi "Siapa saja yang memiliki link".
+        </p>
+        
+        <form id="taskForm">
+            <input type="url" id="linkTugas" placeholder="Masukkan Link Tugas (Contoh: https://drive.google.com/...)" required>
+            <button type="submit" class="btn-submit" id="submitBtn">Kirim Tugas</button>
+            <p id="msg" style="text-align: center; font-weight: bold; margin-top: 10px;"></p>
+        </form>
+    </div>
 </div>
 
 <script src="assets/js/app.js"></script>
