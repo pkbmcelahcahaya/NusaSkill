@@ -6,23 +6,37 @@
     <title>Kurikulum - NusaSkill</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; background-color: #f4f7f6; color: #333; }
+        
+        /* CSS Navbar & Logo */
         .navbar { background-color: #2c3e50; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; }
+        .brand-container { display: flex; align-items: center; }
+        .logo { height: 40px; margin-right: 15px; }
         .navbar h2 { margin: 0; color: #3498db; }
         .navbar a { color: white; text-decoration: none; margin-left: 20px; font-weight: bold; }
+        
         .container { max-width: 900px; margin: 40px auto; padding: 20px; }
-        .level-card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #3498db; }
+        
+        /* CSS Card & Thumbnail */
+        .level-card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-left: 5px solid #3498db; }
+        .card-img { width: 100%; max-height: 250px; object-fit: cover; border-radius: 5px; margin-bottom: 15px; }
+        
         .basic { border-color: #2ecc71; }
         .inter { border-color: #f1c40f; }
         .advance { border-color: #e74c3c; }
-        h3 { margin-top: 0; }
+        
+        h3 { margin-top: 0; color: #2c3e50; }
         .price { font-size: 20px; font-weight: bold; color: #2c3e50; margin: 10px 0; }
-        .btn-daftar { background-color: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 10px; }
+        .btn-daftar { background-color: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 10px; font-weight: bold; }
+        .btn-daftar:hover { background-color: #2980b9; }
     </style>
 </head>
 <body>
 
 <div class="navbar">
-    <h2>NusaSkill LMS</h2>
+    <div class="brand-container">
+        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/NusaSkill.png" alt="Logo NusaSkill" class="logo">
+        <h2>NusaSkill LMS</h2>
+    </div>
     <div>
         <a href="index.html">Beranda</a>
         <a href="pendaftaran.html" style="background: #e67e22; padding: 8px 15px; border-radius: 5px;">Daftar Sekarang</a>
@@ -31,9 +45,10 @@
 
 <div class="container">
     <h1 style="text-align:center;">Pilihan Program Kursus</h1>
-    <p style="text-align:center;">Pilih level yang sesuai dengan kebutuhan karir Anda.</p>
+    <p style="text-align:center; margin-bottom: 30px;">Pilih level yang sesuai dengan kebutuhan karir Anda.</p>
 
     <div class="level-card basic">
+        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/LEVEL%201%20%E2%80%93%20BASIC%20(Pemula).png" alt="Thumbnail Level 1" class="card-img">
         <h3>🟢 LEVEL 1 – BASIC (Pemula)</h3>
         <p><strong>Durasi:</strong> 3 Bulan (12 Pertemuan)</p>
         <p><strong>Materi:</strong> Windows, Internet, MS Word, MS Excel Dasar, PowerPoint.</p>
@@ -42,6 +57,7 @@
     </div>
 
     <div class="level-card inter">
+        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/LEVEL%202%20%E2%80%93%20INTERMEDIATE%20(Menengah).png" alt="Thumbnail Level 2" class="card-img">
         <h3>🟡 LEVEL 2 – INTERMEDIATE (Menengah)</h3>
         <p><strong>Durasi:</strong> 3 Bulan (12 Pertemuan)</p>
         <p><strong>Materi:</strong> Excel Lanjutan (VLOOKUP, Pivot), Dasar Desain Grafis, Dasar HTML.</p>
@@ -50,6 +66,7 @@
     </div>
 
     <div class="level-card advance">
+        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/LEVEL%203%20%E2%80%93%20ADVANCE%20(Profesional).png" alt="Thumbnail Level 3" class="card-img">
         <h3>🔴 LEVEL 3 – ADVANCE (Profesional)</h3>
         <p><strong>Durasi:</strong> 6 Bulan (24 Pertemuan)</p>
         <p><strong>Spesialisasi:</strong> Web Developer / Desain Grafis / Digital Marketing.</p>
