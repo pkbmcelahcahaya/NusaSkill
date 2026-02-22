@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul 5: Character Design & Konsistensi Identitas</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; margin: 0; padding: 0; color: #333; }
+.navbar { background: #1a1a1a; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+.navbar .logo { font-size: 24px; font-weight: bold; color: #00d2ff; }
+.btn-back { background: #333; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; transition: background 0.3s; }
+.btn-back:hover { background: #555; }
+.container { max-width: 1000px; margin: 30px auto; background: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; }
+.module-header { background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%); color: white; padding: 40px; text-align: center; }
+.module-header h1 { margin: 0 0 10px 0; font-size: 2.2em; }
+.module-content { padding: 40px; }
+.week-section { margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+.week-section h2 { color: #3a7bd5; margin-bottom: 15px; }
+.img-fluid { width: 100%; height: 400px; object-fit: cover; border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.step-box { background: #f8f9fa; border-left: 4px solid #3a7bd5; padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+.step-box h4 { margin-top: 0; color: #333; }
+.task-list { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 15px 0; border-radius: 0 8px 8px 0; }
+.task-list h4 { margin-top: 0; color: #856404; }
+.eval-box { background: #e9ecef; border: 1px solid #ced4da; padding: 25px; border-radius: 8px; margin-top: 30px; }
+.eval-box h3 { margin-top: 0; color: #495057; }
+.eval-question { font-weight: bold; margin: 15px 0 10px 0; }
+.eval-options { list-style: none; padding: 0; }
+.eval-options li { margin-bottom: 8px; }
+.submission-form { background: #fdfdfe; border: 1px solid #e1e5eb; padding: 25px; border-radius: 8px; margin-top: 40px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+.form-control { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+.btn-submit { background: #28a745; color: white; padding: 12px 25px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold; }
+.btn-submit:hover { background: #218838; }
+</style>
+</head>
+<body>
+<div class="navbar">
+<div class="logo">NusaSkill</div>
+<a href="dashboard.html" class="btn-back">Kembali ke Dashboard</a>
+</div>
+<div class="container">
+<div class="module-header">
+<h1>Modul 5: Character Design & Konsistensi Identitas</h1>
+<p>Level: Menengah | Memecahkan masalah terbesar dalam AI Generative: Menjaga wajah dan bentuk karakter tetap sama di setiap adegan.</p>
+</div>
+<div class="module-content">
+<div class="week-section">
+<h2>📅 Minggu 1: Dasar Desain Karakter AI</h2>
+<p>Sebelum menggerakkan karakter, Anda harus mendesain "Character Sheet" atau lembar referensi. Karakter yang terlalu rumit (banyak tato acak, aksesoris asimetris) akan sulit dipertahankan konsistensinya oleh AI. Buatlah ciri khas yang spesifik namun sederhana.</p>
+<img src="https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=1000&auto=format&fit=crop" class="img-fluid" alt="Character Design">
+<div class="step-box">
+<h4>💡 Tutorial: Membuat Character Sheet</h4>
+<ol>
+<li>Gunakan prompt: "Character concept art, a 25-year-old male explorer with round glasses, red jacket, multiple views (front, side, back profile), white background".</li>
+<li>Simpan gambar terbaik sebagai referensi utama (Base Image).</li>
+</ol>
+</div>
+<div class="task-list">
+<h4>📋 Tugas Praktik</h4>
+<p>Hasilkan 1 Character Sheet (minimal menampilkan tampak depan dan tampak samping) dari satu karakter orisinal buatan Anda.</p>
+</div>
+</div>
+
+<div class="week-section">
+<h2>📅 Minggu 2: Teknik Identity Lock (Seed & CREF)</h2>
+<p>Setiap gambar AI memiliki nomor "Seed" (benih) unik. Menggunakan seed yang sama membantu AI menghasilkan gaya serupa. Pada platform Midjourney, ada parameter khusus bernama Character Reference (--cref) yang berfungsi mengunci wajah karakter.</p>
+<div class="step-box">
+<h4>💡 Tutorial: Menggunakan Character Reference</h4>
+<ol>
+<li>Upload Base Image wajah karakter Anda dan salin URL-nya.</li>
+<li>Tulis prompt adegan baru: "A man running in the jungle --cref https://images.google.com/?hl=id --cw 100".</li>
+<li>Parameter --cw (Character Weight) 100 berarti AI akan mengunci wajah sekaligus pakaiannya.</li>
+</ol>
+</div>
+<div class="task-list">
+<h4>📋 Tugas Praktik</h4>
+<p>Buat 3 gambar di mana karakter orisinal Anda melakukan aktivitas berbeda (misal: minum kopi, membaca buku, berlari) namun WAJAH tetap terlihat sama.</p>
+</div>
+</div>
+
+<div class="week-section">
+<h2>📅 Minggu 3: Face Swapping & Post-Fixing</h2>
+<p>Terkadang, meskipun sudah menggunakan CREF, wajah AI sedikit melenceng di adegan yang rumit. Di sinilah teknik Face Swapping (misal via bot Discord atau tools seperti Roop/Reactor) digunakan untuk menempelkan wajah asli ke hasil render AI.</p>
+<div class="step-box">
+<h4>💡 Tutorial: Basic Face Swap</h4>
+<ol>
+<li>Siapkan gambar wajah target (Source) jernih dan menghadap depan.</li>
+<li>Siapkan gambar adegan yang wajahnya ingin diubah (Destination).</li>
+<li>Jalankan proses Face Swap menggunakan tools yang direkomendasikan dan perhatikan arah pencahayaan agar terlihat natural.</li>
+</ol>
+</div>
+<div class="task-list">
+<h4>📋 Tugas Praktik</h4>
+<p>Lakukan perbaikan wajah (face swap) pada 2 gambar AI yang gagal/melenceng menggunakan referensi wajah karakter utama Anda.</p>
+</div>
+</div>
+
+<div class="week-section">
+<h2>📅 Minggu 4: Multi-Scene Storyboarding</h2>
+<p>Menerapkan konsistensi dalam sebuah storyboard lengkap. Anda akan mempraktikkan penggabungan ilmu dari modul-modul sebelumnya: menulis prompt terstruktur, memanggil --cref, mengatur sudut kamera, dan menjaga konsistensi warna lingkungan.</p>
+<img src="https://images.unsplash.com/photo-1561112078-7d28e022138a?q=80&w=1000&auto=format&fit=crop" class="img-fluid" alt="Storyboarding">
+<div class="step-box">
+<h4>💡 Tutorial: Merangkai Adegan</h4>
+<ol>
+<li>Buat 4 panel cerita (Panel 1: Karakter tiba. Panel 2: Melihat sesuatu. Panel 3: Bereaksi. Panel 4: Pergi).</li>
+<li>Pastikan setiap panel menggunakan prompt environment dan referensi karakter (--cref atau face swap) yang konsisten.</li>
+</ol>
+</div>
+<div class="task-list">
+<h4>📋 Tugas Praktik</h4>
+<p>Kumpulkan dokumen Storyboard Visual berisi 4-6 frame berurutan yang menceritakan kejadian pendek dengan 1 karakter utama yang konsisten di semua frame.</p>
+</div>
+</div>
+
+<div class="eval-box">
+<h3>📝 Evaluasi Akhir Modul 5</h3>
+<div class="eval-question">1. Apa fungsi dari parameter --cref (Character Reference) dalam platform gambar AI?</div>
+<ul class="eval-options">
+<li><input type="radio" name="q1" value="A"> A. Mengubah resolusi gambar menjadi lebih tajam</li>
+<li><input type="radio" name="q1" value="B"> B. Memaksa AI untuk menghasilkan wajah dan bentuk karakter yang mirip dengan gambar referensi</li>
+<li><input type="radio" name="q1" value="C"> C. Menambahkan efek suara pada karakter</li>
+<li><input type="radio" name="q1" value="D"> D. Menghapus karakter dari latar belakang</li>
+</ul>
+
+<div class="eval-question">2. Apa itu 'Seed' dalam generasi AI?</div>
+<ul class="eval-options">
+<li><input type="radio" name="q2" value="A"> A. Resolusi pixel dari gambar akhir</li>
+<li><input type="radio" name="q2" value="B"> B. Nomor acak (noise pattern) awal yang digunakan untuk memproses gambar, penting untuk replikasi hasil</li>
+<li><input type="radio" name="q2" value="C"> C. Perintah untuk membuat gambar menjadi format vektor</li>
+<li><input type="radio" name="q2" value="D"> D. Server tempat AI berjalan</li>
+</ul>
+
+<div class="eval-question">3. Mengapa desain karakter yang terlalu rumit (asimetris/banyak detail kecil acak) kurang disarankan untuk pemula?</div>
+<ul class="eval-options">
+<li><input type="radio" name="q3" value="A"> A. Karena menghabiskan memori komputer</li>
+<li><input type="radio" name="q3" value="B"> B. AI saat ini kesulitan mempertahankan konsistensi detail kecil di berbagai sudut adegan (angle)</li>
+<li><input type="radio" name="q3" value="C"> C. Karena melanggar hak cipta</li>
+<li><input type="radio" name="q3" value="D"> D. Warnanya akan menjadi hitam putih</li>
+</ul>
+
+<div class="eval-question">4. Face Swapping paling baik dilakukan ketika:</div>
+<ul class="eval-options">
+<li><input type="radio" name="q4" value="A"> A. Wajah di hasil AI tidak mirip dengan karakter referensi meskipun sudah menggunakan metode cref/seed</li>
+<li><input type="radio" name="q4" value="B"> B. Kita ingin mengubah latar belakang gambar</li>
+<li><input type="radio" name="q4" value="C"> C. Resolusi gambar kurang dari 720p</li>
+<li><input type="radio" name="q4" value="D"> D. Karakter sedang menghadap membelakangi kamera</li>
+</ul>
+
+<div class="eval-question">5. Soal Essay:</div>
+<p>Jelaskan workflow (langkah kerja) Anda jika Anda diminta membuat 5 adegan berbeda namun dengan 1 tokoh protagonis yang wajah dan bajunya harus persis sama!</p>
+<textarea class="form-control" rows="4" placeholder="Ketik jawaban essay Anda di sini..."></textarea>
+</div>
+
+<div class="submission-form">
+<h3>📥 Kumpulkan Tugas & Evaluasi</h3>
+<div class="form-group">
+<label>Pilih Tugas</label>
+<select class="form-control">
+<option value="minggu1">Tugas Minggu 1: Character Sheet</option>
+<option value="minggu2">Tugas Minggu 2: 3 Aktivitas Konsisten</option>
+<option value="minggu3">Tugas Minggu 3: Hasil Face Swap</option>
+<option value="minggu4">Tugas Minggu 4: Storyboard Visual</option>
+<option value="evaluasi">Evaluasi Akhir Modul 5</option>
+</select>
+</div>
+<div class="form-group">
+<label>URL Google Drive Tugas</label>
+<input type="url" class="form-control" placeholder="https://drive.google.com/drive/folders/...">
+</div>
+<button class="btn-submit" onclick="document.getElementById('success-msg-5').style.display='block'">Submit Tugas</button>
+<div id="success-msg-5" style="display:none; color:#155724; background-color:#d4edda; padding:10px; border-radius:4px; margin-top:15px; border:1px solid #c3e6cb;">Berhasil! Tugas Anda telah tersimpan ke dalam sistem.</div>
+</div>
+
+</div>
+</div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
