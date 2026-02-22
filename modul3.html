@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul 3: MS Excel Lanjutan - NusaSkill</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .module-header { text-align: center; margin-bottom: 40px; padding: 30px; background: linear-gradient(135deg, #1d6f42, #27ae60); color: white; border-radius: 10px; }
+        .module-header h1 { margin: 0 0 10px 0; font-size: 28px; }
+        .module-content { background: #ffffff; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 40px; line-height: 1.8; color: #333; }
+        .week-section { margin-top: 40px; padding-top: 20px; border-top: 2px dashed #ecf0f1; }
+        .week-section h2 { color: #1e392a; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .week-section h3 { color: #27ae60; margin-top: 25px; }
+        .img-fluid { max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .step-box { background: #f4fdf8; border-left: 4px solid #27ae60; padding: 15px 20px; margin: 15px 0; border-radius: 0 5px 5px 0; font-family: monospace; font-size: 15px; }
+        .task-list { background: #e8f8f5; padding: 20px; border-radius: 8px; border: 1px solid #a3e4d7; margin-top: 30px; }
+        .task-list h4 { color: #117a65; margin-top: 0; font-size: 18px; }
+        .task-list ul { padding-left: 20px; margin-bottom: 0; color: #117a65; }
+        .formula-hl { background: #d1f2eb; padding: 2px 6px; border-radius: 4px; font-weight: bold; color: #0e6251; }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="brand-container">
+        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/NusaSkill.png" alt="Logo NusaSkill" class="logo">
+        <h2>NusaSkill LMS</h2>
+    </div>
+    <a href="dashboard.html" style="background: #e67e22; padding: 8px 15px; border-radius: 5px; color: white; text-decoration: none;">Kembali ke Dashboard</a>
+</div>
+
+<div class="container">
+    <div class="module-header">
+        <h1>Modul 3: MS Excel Lanjutan</h1>
+        <p>Tahap Menengah (Intermediate) | Fokus: Analisis Data, VLOOKUP, & Pivot Table</p>
+        <p style="font-size: 14px; opacity: 0.8;">Instruktur: Admin Budi</p>
+    </div>
+
+    <div class="module-content">
+        <p style="font-size: 18px; text-align: center; margin-bottom: 40px;">Selamat datang di level Intermediate! Penguasaan Excel tingkat lanjut adalah kunci emas untuk lolos tahap wawancara kerja administrasi, keuangan, dan data entri.</p>
+
+        <div class="week-section">
+            <h2>📅 Minggu 1: Review Rumus Dasar & Referensi Absolut ($)</h2>
+            <p>Sebelum masuk ke rumus yang rumit, kita harus memperkuat dasar perhitungan dan memahami cara mengunci sel.</p>
+            
+            <h3>1. Pengingat Rumus Dasar</h3>
+            <ul>
+                <li><span class="formula-hl">=SUM(A1:A5)</span> : Menjumlahkan angka.</li>
+                <li><span class="formula-hl">=AVERAGE(A1:A5)</span> : Mencari nilai rata-rata.</li>
+                <li><span class="formula-hl">=MAX(A1:A5)</span> & <span class="formula-hl">=MIN(A1:A5)</span> : Mencari nilai tertinggi dan terendah.</li>
+            </ul>
+
+            <h3>2. Mengunci Sel dengan Simbol Dollar ($)</h3>
+            <p>Pernahkah Anda menarik (drag) rumus ke bawah, tapi hasilnya malah *error* (Value)? Itu karena referensi selnya ikut turun. Kita harus menguncinya!</p>
+            <div class="step-box">
+                Tekan tombol <strong>F4</strong> di keyboard setelah mengklik sel pada rumus.<br>
+                Contoh: <strong>=A1*$B$1</strong><br>
+                Artinya, jika rumus ditarik ke bawah, A1 akan berubah menjadi A2, A3, dst, tetapi B1 akan <strong>tetap terkunci</strong> di B1.
+            </div>
+
+            <div class="task-list">
+                <h4>🎯 Tugas Praktik Minggu 1:</h4>
+                <ul>
+                    <li>Buat tabel "Perhitungan Diskon". Kolom: Nama Barang, Harga Asli, Diskon (%), dan Harga Akhir.</li>
+                    <li>Tuliskan angka persentase diskon (misal 10%) di <strong>satu sel khusus</strong> di luar tabel.</li>
+                    <li>Gunakan referensi absolut ($) untuk menghitung Harga Akhir semua barang dengan menarik rumus ke bawah.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-section">
+            <h2>📅 Minggu 2: Fungsi Logika (IF Bertingkat)</h2>
+            <p>Fungsi IF membuat Excel bisa "berpikir" dan mengambil keputusan berdasarkan syarat tertentu.</p>
+            
+            <h3>1. Logika IF Dasar</h3>
+            <div class="step-box">
+                Struktur: =IF(Syarat, "Jika Benar", "Jika Salah")<br>
+                Contoh: <span class="formula-hl">=IF(C2>=75, "Lulus", "Remedial")</span><br>
+                Artinya: Jika nilai di C2 lebih atau sama dengan 75, tulis Lulus. Jika kurang, tulis Remedial.
+            </div>
+
+            <h3>2. Logika IF Bertingkat (Nested IF)</h3>
+            <p>Bagaimana jika syaratnya lebih dari dua (Misal: A, B, C, D)? Kita masukkan IF di dalam IF.</p>
+            <div class="step-box">
+                Contoh Menentukan Grade Nilai:<br>
+                <span class="formula-hl">=IF(C2>=90, "A", IF(C2>=80, "B", IF(C2>=70, "C", "D")))</span>
+            </div>
+
+            <div class="task-list">
+                <h4>🎯 Tugas Praktik Minggu 2:</h4>
+                <ul>
+                    <li>Buat tabel "Daftar Nilai Ujian Siswa" (Nama, Nilai Angka, Grade Huruf, Status Kelulusan).</li>
+                    <li>Gunakan rumus IF untuk menentukan Status Kelulusan (Lulus jika >=80).</li>
+                    <li>Gunakan rumus IF Bertingkat untuk menentukan Grade Huruf (A, B, C, D).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-section">
+            <h2>📅 Minggu 3: Fungsi Pencarian Data (VLOOKUP)</h2>
+            <p>Ini adalah rumus yang paling sering diuji saat melamar kerja. VLOOKUP berfungsi mencari data di tabel lain secara otomatis berdasarkan suatu kata kunci.</p>
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Data Analisis" class="img-fluid">
+
+            <h3>Cara Kerja VLOOKUP</h3>
+            <p>Bayangkan Anda adalah kasir. Anda memasukkan <strong>Kode Barang</strong> (Kata Kunci), dan Excel otomatis memunculkan <strong>Nama Barang</strong> dari tabel *database* gudang.</p>
+            
+            <div class="step-box">
+                Struktur: =VLOOKUP(Sel_Kata_Kunci, Tabel_Database, Kolom_Ke_Berapa, FALSE)<br><br>
+                Contoh: <span class="formula-hl">=VLOOKUP(A2, $F$2:$H$10, 2, FALSE)</span><br>
+                Artinya: Cari kode di A2, temukan di tabel F2 sampai H10 (jangan lupa dikunci $), lalu tampilkan data dari kolom ke-2. (FALSE berarti harus cocok persis).
+            </div>
+
+            <div class="task-list">
+                <h4>🎯 Tugas Praktik Minggu 3:</h4>
+                <ul>
+                    <li>Buat dua tabel dalam satu Sheet. Tabel 1 (Kiri) adalah Tabel Transaksi (Kode Barang, Nama Barang, Harga). Tabel 2 (Kanan) adalah Database Barang.</li>
+                    <li>Gunakan VLOOKUP untuk mengisi kolom Nama Barang dan Harga di Tabel Transaksi secara otomatis saat Anda mengetik Kode Barang.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="week-section">
+            <h2>📅 Minggu 4: Manajemen Data & Pivot Table</h2>
+            <p>Ketika Anda memiliki ribuan baris data, rumus saja tidak cukup. Anda butuh Pivot Table untuk merangkum data menjadi laporan dalam hitungan detik.</p>
+
+            <h3>1. Sort & Filter Data</h3>
+            <p>Blok judul tabel Anda, lalu ke menu <strong>Data > Filter</strong>. Akan muncul tanda panah di setiap judul untuk menyaring data (misal: hanya tampilkan penjualan bulan Januari).</p>
+
+            <h3>2. Membuat Pivot Table</h3>
+            <div class="step-box">
+                1. Klik salah satu sel di dalam tabel besar Anda.<br>
+                2. Pergi ke menu <strong>Insert > PivotTable</strong>, lalu klik OK.<br>
+                3. Di panel sebelah kanan, centang kolom yang ingin dianalisis.<br>
+                4. Tarik field (misal: "Cabang Toko") ke kotak <strong>Rows</strong>, dan field "Total Penjualan" ke kotak <strong>Values</strong>.<br>
+                5. Excel akan otomatis membuat tabel laporan rekap total penjualan per cabang!
+            </div>
+
+            <div class="task-list">
+                <h4>🎯 Tugas Praktik Minggu 4 (Final Modul 3):</h4>
+                <ul>
+                    <li>Buatlah data dummy (palsu) "Laporan Penjualan Toko" sebanyak minimal 30 baris (Kolom: Tanggal, Nama Sales, Cabang Toko, Total Jual).</li>
+                    <li>Buat 1 Pivot Table yang menampilkan "Total Penjualan Masing-Masing Sales".</li>
+                    <li>Simpan file Excel ini. Pastikan Sheet 1 berisi data mentah, dan Sheet 2 berisi Pivot Table.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tugas-box" style="margin: 0 auto; max-width: 800px;">
+        <h3 style="text-align: center; color: #1d6f42;">📥 Kumpulkan Tugas Modul 3 (MS Excel)</h3>
+        <p style="color: #7f8c8d; font-size: 15px; margin-bottom: 25px; text-align: center; line-height: 1.6;">
+            Masukkan semua file Excel (.xlsx) dari Minggu 1 hingga Minggu 4 ke dalam satu folder Google Drive. Pastikan akses folder diatur ke "Siapa saja yang memiliki link".
+        </p>
+        
+        <form id="taskForm">
+            <select id="pilihanMinggu" style="margin-bottom: 20px; width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;">
+                <option value="Tugas Modul 3 - Excel">Paket Tugas Modul 3 (Minggu 1 - 4)</option>
+            </select>
+            <input type="url" id="linkTugas" placeholder="Contoh: https://drive.google.com/drive/folders/xxxxx" required style="width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;">
+            <button type="submit" class="btn-submit" id="submitBtn" style="width: 100%; font-size: 18px; padding: 15px; background: #27ae60;">Kirim Tugas Modul 3</button>
+            <p id="msg" style="text-align: center; font-weight: bold; margin-top: 15px;"></p>
+        </form>
+    </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
