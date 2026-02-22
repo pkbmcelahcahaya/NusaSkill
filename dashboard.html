@@ -4,35 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - NusaSkill LMS</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f4f7f6; margin: 0; }
-        .navbar { background-color: #2c3e50; padding: 15px 20px; color: white; display: flex; justify-content: space-between; align-items: center; }
-        .navbar h2 { margin: 0; color: #3498db; }
-        .nav-links a { color: white; text-decoration: none; margin-right: 15px; font-weight: bold; }
-        .nav-links a:hover { color: #3498db; }
-        .logout-btn { background-color: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
-        
-        .container { padding: 30px; max-width: 1000px; margin: auto; }
-        .welcome-card { background: white; padding: 20px; border-radius: 10px; border-left: 5px solid #2ecc71; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        
-        .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
-        .course-card { background: white; padding: 20px; border-radius: 8px; border-top: 5px solid #3498db; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .badge { background-color: #e67e22; color: white; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; }
-        .btn-masuk { background-color: #3498db; color: white; padding: 10px; width: 100%; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; font-weight: bold; }
-        .btn-masuk:hover { background-color: #2980b9; }
-    </style>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="navbar">
-    <h2>NusaSkill LMS</h2>
+    <div class="brand-container">
+        <img src="https://raw.githubusercontent.com/pkbmcelahcahaya/NusaSkill/main/assets/images/NusaSkill.png" alt="Logo NusaSkill" class="logo">
+        <h2>NusaSkill LMS</h2>
+    </div>
     <div class="nav-links">
         <a href="progress.html">Cek Nilai & Sertifikat</a>
         <button class="logout-btn" onclick="logout()">Keluar</button>
     </div>
 </div>
 
-<div class="container">
+<div class="container dashboard-container">
     <div class="welcome-card">
         <h2 id="userNameDisplay">Memuat...</h2>
         <p>Program Anda: <strong id="userLevelDisplay" style="color:#e67e22;">-</strong> | Email: <span id="userEmailDisplay">-</span></p>
@@ -44,55 +32,7 @@
     <div class="course-grid" id="courseContainer"></div>
 </div>
 
-<script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz9qgmLdUnj6-4UfhNHnlqPKVC42NVVdmDWmGdbVHTIlJVedJKQtQbWQ3NF0CSkB9t_RA/exec";
-    let currentUser = null;
+<script src="app.js"></script>
 
-    window.onload = function() {
-        const userData = localStorage.getItem("userLMS");
-        if (!userData) {
-            alert("Silakan login terlebih dahulu.");
-            window.location.href = "index.html";
-        } else {
-            currentUser = JSON.parse(userData);
-            document.getElementById("userNameDisplay").innerText = "Selamat Datang, " + currentUser.nama + "!";
-            document.getElementById("userLevelDisplay").innerText = currentUser.level;
-            document.getElementById("userEmailDisplay").innerText = currentUser.email;
-            loadCourses();
-        }
-    };
-
-    function logout() {
-        localStorage.removeItem("userLMS");
-        window.location.href = "index.html";
-    }
-
-    async function loadCourses() {
-        try {
-            let response = await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify({ action: "getCourses" }) });
-            let result = await response.json();
-            document.getElementById('loadingMsg').style.display = 'none';
-
-            if (result.status === "success" && result.data.length > 0) {
-                const container = document.getElementById('courseContainer');
-                result.data.forEach(course => {
-                    // Filter kursus agar tampil sesuai level peserta, atau tampilkan semua jika mau
-                    container.innerHTML += `
-                        <div class="course-card">
-                            <span class="badge">${course.level} - ${course.bulan}</span>
-                            <h3 style="margin: 10px 0;">${course.judul}</h3>
-                            <p style="color: #7f8c8d; font-size: 14px; margin: 0;">Instruktur: ${course.instruktur}</p>
-                            <button class="btn-masuk" onclick="window.location.href='course.html?id=${course.id}&title=${encodeURIComponent(course.judul)}&link=${encodeURIComponent(course.link)}'">Masuk Kelas</button>
-                        </div>
-                    `;
-                });
-            } else {
-                document.getElementById('courseContainer').innerHTML = "<p>Modul belum tersedia.</p>";
-            }
-        } catch (e) {
-            document.getElementById('loadingMsg').innerText = "Gagal memuat modul.";
-        }
-    }
-</script>
 </body>
 </html>
